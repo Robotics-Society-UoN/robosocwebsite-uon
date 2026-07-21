@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RoboSoc website content",
+  "description": "Editable copy, links and images for the fixed RoboSoc website layout.",
+  "type": "object",
+  "required": ["version", "meta", "brand", "navigation", "links", "about", "calendar", "competition", "committee", "join", "footer"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "meta": { "$ref": "#/$defs/titleDescription" },
+    "brand": {
+      "type": "object",
+      "required": ["logo", "logoAlt"],
+      "properties": {
+        "logo": { "$ref": "#/$defs/asset" },
+        "logoAlt": { "$ref": "#/$defs/text" }
+      }
+    },
+    "navigation": { "type": "object" },
+    "links": { "type": "object" },
+    "about": { "type": "object" },
+    "calendar": { "type": "object" },
+    "competition": { "type": "object" },
+    "committee": { "type": "object" },
+    "join": { "type": "object" },
+    "footer": { "type": "object" }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1 },
+    "asset": { "type": "string", "pattern": "^assets/" },
+    "titleDescription": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "$ref": "#/$defs/text" },
+        "description": { "$ref": "#/$defs/text" }
+      }
+    }
+  }
+}

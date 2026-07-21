@@ -1,0 +1,106 @@
+{
+  "$schema": "./committee.schema.json",
+  "version": 1,
+  "members": [
+    {
+      "id": "oh-yi-wen",
+      "name": "Oh Yi Wen",
+      "role": "Co-Founder & President",
+      "course": "Year 2 Electrical & Electronic Engineering",
+      "image": "assets/oh-yi-wen.webp",
+      "imageScale": 2.55,
+      "imagePosition": "15% 41%",
+      "published": true
+    },
+    {
+      "id": "dylan-lim",
+      "name": "Dylan Lim",
+      "role": "Co-Founder & Vice President",
+      "course": "Year 1 Computer Science",
+      "image": "assets/dylan-lim.webp",
+      "imageScale": 2.55,
+      "imagePosition": "83% 41%",
+      "published": true
+    },
+    {
+      "id": "numa-fecher",
+      "name": "Numa Fecher",
+      "role": "General Secretary",
+      "course": "Year 1 Computer Science",
+      "image": "assets/numa-fecher.webp",
+      "imageScale": 2.55,
+      "imagePosition": "15% 41%",
+      "published": true
+    },
+    {
+      "id": "dua-eltaie",
+      "name": "Dua Eltaie",
+      "role": "Treasurer",
+      "course": "Year 4 Economics",
+      "image": "assets/dua-eltaie.webp",
+      "imageScale": 2.55,
+      "imagePosition": "83% 41%",
+      "published": true
+    },
+    {
+      "id": "nana-yaw-asare-frimpong",
+      "name": "Nana Yaw Asare Frimpong",
+      "role": "Technical Officer",
+      "course": "Year 3 Electrical & Electronic Engineering",
+      "image": "assets/nana-yaw-asare-frimpong.webp",
+      "imageScale": 2.55,
+      "imagePosition": "15% 41%",
+      "published": true
+    },
+    {
+      "id": "khoo-ning-en",
+      "name": "Khoo Ning En",
+      "role": "Technical Officer",
+      "course": "Year 2 Electrical & Electronic Engineering",
+      "image": "assets/khoo-ning-en.webp",
+      "imageScale": 2.55,
+      "imagePosition": "83% 41%",
+      "published": true
+    },
+    {
+      "id": "renato-ignacio-barra-faundez",
+      "name": "Renato Ignacio Barra Faúndez",
+      "role": "Technical Officer",
+      "course": "Year 1 Civil Engineering",
+      "image": "assets/renato-barra.webp",
+      "imageScale": 2.55,
+      "imagePosition": "15% 41%",
+      "published": true
+    },
+    {
+      "id": "yashas-paluri",
+      "name": "Yashas Paluri",
+      "role": "Marketing Officer",
+      "course": "Year 1 Computer Science",
+      "image": "assets/yashas-paluri.webp",
+      "imageScale": 2.55,
+      "imagePosition": "83% 41%",
+      "published": true
+    },
+    {
+      "id": "liew-hui-ling",
+      "name": "Liew Hui Ling",
+      "role": "Marketing Officer",
+      "course": "Year 2 Electrical & Electronic Engineering",
+      "image": "assets/liew-hui-ling.webp",
+      "imageScale": 2.55,
+      "imagePosition": "15% 41%",
+      "published": true
+    },
+    {
+      "id": "finian-eagling",
+      "name": "Finian Eagling",
+      "role": "Wellbeing Officer",
+      "course": "Year 1 Computer Science",
+      "image": "assets/finian-eagling.webp",
+      "imageScale": 2.55,
+      "imagePosition": "83% 41%",
+      "published": true
+    }
+  ]
+}

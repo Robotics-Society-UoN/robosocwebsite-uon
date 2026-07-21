@@ -1,0 +1,118 @@
+{
+  "$schema": "./site.schema.json",
+  "version": 1,
+  "meta": {
+    "title": "ROBO > SOC | University Robotics Society",
+    "description": "University of Nottingham Robotics Society: workshops, robotics projects and the UniBots competition, open to every student."
+  },
+  "brand": {
+    "logo": "assets/robosoc-logo.jpg",
+    "logoAlt": "UoN Robotics Society logo"
+  },
+  "navigation": {
+    "calendar": "Calendar",
+    "unibots": "UniBots",
+    "committee": "Committee",
+    "contact": "Contact",
+    "join": "JOIN US!"
+  },
+  "links": {
+    "membership": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership"
+  },
+  "about": {
+    "heading": "Who are we?",
+    "paragraphs": [
+      "[[RoboSoc]] is the university's robotics society. We build autonomous robots, run workshops, and compete nationally.",
+      "No experience? Perfect. We teach Arduino, CAD, computer vision, and ML for robotics from zero. Weekly build nights, parts provided, mentors on-hand.",
+      "Our flagship focus is [[UniBots]] — we give every member the teaching, materials and team support needed to build a competition robot."
+    ],
+    "bullets": [
+      "All skill levels welcome",
+      "No application process",
+      "Open to all students"
+    ],
+    "image": "assets/committee-group.png",
+    "imageAlt": "UoN Robotics Society members together at a society event"
+  },
+  "calendar": {
+    "heading": "What's on?"
+  },
+  "competition": {
+    "heading": "Build. Learn. Compete.",
+    "body": "We teach every skill and provide every material you need to build a robot for UniBots. No application, no prior experience — everyone is welcome.",
+    "points": [
+      {
+        "label": "SKILLS_TAUGHT",
+        "text": "Arduino, CAD, coding, electronics and machining."
+      },
+      {
+        "label": "MATERIALS_PROVIDED",
+        "text": "Tools, parts and resources are included."
+      },
+      {
+        "label": "OPEN_TO_EVERYONE",
+        "text": "Beginners and experienced builders join alike."
+      }
+    ],
+    "buttonLabel": "JOIN THE TEAM",
+    "image": "assets/workshop-event.jpg",
+    "imageAlt": "UoN Robotics Society workshop with students learning robotics"
+  },
+  "committee": {
+    "heading": "Committee",
+    "scrollHint": "SCROLL TO EXPLORE"
+  },
+  "join": {
+    "heading": "Join RoboSoc",
+    "body": "Get workshop access, equipment, mentorship and a place on our UniBots competition team. Zero experience required. Membership is purchased through the Students' Union.",
+    "buttonLabel": "BUY_MEMBERSHIP!"
+  },
+  "footer": {
+    "contactTitle": "CONTACT",
+    "contact": [
+      {
+        "icon": "fa-solid fa-graduation-cap",
+        "text": "University of Nottingham"
+      },
+      {
+        "icon": "fa-solid fa-message",
+        "text": "Message us on Discord or Instagram"
+      }
+    ],
+    "linksTitle": "LINKS",
+    "links": [
+      {
+        "icon": "fa-brands fa-discord",
+        "label": "Discord Server",
+        "url": "https://discord.gg/psgGx7FQn"
+      },
+      {
+        "icon": "fa-brands fa-instagram",
+        "label": "Instagram",
+        "url": "https://www.instagram.com/uon_robotics_society/"
+      },
+      {
+        "icon": "fa-solid fa-id-card",
+        "label": "Buy Membership",
+        "url": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership"
+      }
+    ],
+    "exploreTitle": "EXPLORE",
+    "explore": [
+      {
+        "label": "About RoboSoc",
+        "url": "#main"
+      },
+      {
+        "label": "UniBots Competition",
+        "url": "#competition"
+      },
+      {
+        "label": "Meet the Committee",
+        "url": "#committee"
+      }
+    ],
+    "copyright": "© 2026 ROBO>SOC • University Robotics Society",
+    "tagline": "Built for students. Open to everyone."
+  }
+}

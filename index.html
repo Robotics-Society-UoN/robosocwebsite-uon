@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ROBO > SOC | University Robotics Society</title>
+<title>ROBO &gt; SOC | University Robotics Society</title>
+<meta name="description" content="University of Nottingham Robotics Society: workshops, robotics projects and the UniBots competition, open to every student.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -736,16 +737,16 @@
         <div class="flex justify-between items-center h-20">
             <div class="flex items-center gap-4">
                 <a href="#main" aria-label="RoboSoc home">
-                    <img src="assets/robosoc-logo.jpg" alt="UoN Robotics Society logo" class="brand-logo rounded border object-cover">
+                    <img id="brand-logo" src="assets/robosoc-logo.jpg" alt="UoN Robotics Society logo" class="brand-logo rounded border object-cover">
                 </a>
             </div>
             
             <div class="hidden md:flex items-center gap-8">
-                <a href="#calendar" class="nav-link">Calendar</a>
-                <a href="#unibots" class="nav-link">UniBots</a>
-                <a href="#committee" class="nav-link">Committee</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-2.5 rounded inline-flex items-center gap-2">
+                <a href="#calendar" class="nav-link" data-nav="calendar">Calendar</a>
+                <a href="#unibots" class="nav-link" data-nav="unibots">UniBots</a>
+                <a href="#committee" class="nav-link" data-nav="committee">Committee</a>
+                <a href="#contact" class="nav-link" data-nav="contact">Contact</a>
+                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-2.5 rounded inline-flex items-center gap-2" data-link="membership" data-nav="join">
                     JOIN US!
                 </a>
             </div>
@@ -758,11 +759,11 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-[#1B3442] mt-2">
             <div class="flex flex-col gap-4 pt-4">
-                <a href="#calendar" class="nav-link py-2">Calendar</a>
-                <a href="#unibots" class="nav-link py-2">UniBots</a>
-                <a href="#committee" class="nav-link py-2">Committee</a>
-                <a href="#contact" class="nav-link py-2">Contact</a>
-                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-3 rounded text-center">JOIN US!</a>
+                <a href="#calendar" class="nav-link py-2" data-nav="calendar">Calendar</a>
+                <a href="#unibots" class="nav-link py-2" data-nav="unibots">UniBots</a>
+                <a href="#committee" class="nav-link py-2" data-nav="committee">Committee</a>
+                <a href="#contact" class="nav-link py-2" data-nav="contact">Contact</a>
+                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-3 rounded text-center" data-link="membership" data-nav="join">JOIN US!</a>
             </div>
         </div>
     </nav>
@@ -775,12 +776,12 @@
         <section class="section-border rounded p-6 sm:p-8 bg-[#11232E]">
             <div class="mb-6">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-1">
-                    <span class="terminal-text">></span> Who are we?
+                    <span class="terminal-text">></span> <span id="about-heading">Who are we?</span>
                 </h2>
                 <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
             </div>
             
-            <div class="space-y-4 text-[#D6EEF4] leading-relaxed">
+            <div id="about-copy" class="space-y-4 text-[#D6EEF4] leading-relaxed">
                 <p>
                     <span class="terminal-text font-bold cursor-blink">RoboSoc</span> is the university's robotics society. We build autonomous robots, run workshops, and compete nationally.
                 </p>
@@ -790,7 +791,7 @@
                 <p>
                     Our flagship focus is <span class="terminal-text font-bold">UniBots</span> &mdash; we give every member the teaching, materials and team support needed to build a competition robot.
                 </p>
-                <p class="text-[#7FA3B0] text-sm pt-2 border-t border-[#1B3442]">
+                <p id="about-bullets" class="text-[#7FA3B0] text-sm pt-2 border-t border-[#1B3442]">
                     > All skill levels welcome<br>
                     > No application process<br>
                     > Open to all students
@@ -798,7 +799,7 @@
             </div>
             
             <div class="media-frame mt-6 aspect-video bg-[#08141A] rounded border border-[#1B3442] flex items-center justify-center overflow-hidden">
-                <img src="assets/committee-group.png" alt="UoN Robotics Society members together at a society event" class="w-full h-full object-cover opacity-90">
+                <img id="about-image" src="assets/committee-group.png" alt="UoN Robotics Society members together at a society event" class="w-full h-full object-cover opacity-90">
             </div>
         </section>
         
@@ -806,7 +807,7 @@
         <section id="calendar" class="section-border rounded p-6 sm:p-8 bg-[#11232E]">
             <div class="mb-6">
                 <h2 class="text-2xl sm:text-3xl font-bold mb-1">
-                    <span class="terminal-text">></span> What's on?
+                    <span class="terminal-text">></span> <span id="calendar-heading">What's on?</span>
                 </h2>
                 <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
             </div>
@@ -836,19 +837,19 @@
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
                 <div class="mb-6">
-                    <h2 class="text-2xl sm:text-3xl font-bold mb-1"><span class="terminal-text">></span> Build. Learn. Compete.</h2>
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-1"><span class="terminal-text">></span> <span id="competition-heading">Build. Learn. Compete.</span></h2>
                     <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
                 </div>
-                <p class="text-[#D6EEF4] leading-relaxed mb-6">We teach every skill and provide every material you need to build a robot for UniBots. No application, no prior experience &mdash; everyone is welcome.</p>
-                <div class="space-y-3 text-sm mb-6">
+                <p id="competition-body" class="text-[#D6EEF4] leading-relaxed mb-6">We teach every skill and provide every material you need to build a robot for UniBots. No application, no prior experience &mdash; everyone is welcome.</p>
+                <div id="competition-points" class="space-y-3 text-sm mb-6">
                     <div><span class="terminal-text font-bold">> SKILLS_TAUGHT</span> &mdash; Arduino, CAD, coding, electronics and machining.</div>
                     <div><span class="terminal-text font-bold">> MATERIALS_PROVIDED</span> &mdash; Tools, parts and resources are included.</div>
                     <div><span class="terminal-text font-bold">> OPEN_TO_EVERYONE</span> &mdash; Beginners and experienced builders join alike.</div>
                 </div>
-                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-3 rounded inline-flex items-center gap-2">JOIN THE TEAM <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                <a id="competition-cta" href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-3 rounded inline-flex items-center gap-2" data-link="membership"><span>JOIN THE TEAM</span> <i class="fa-solid fa-arrow-right text-xs"></i></a>
             </div>
             <div class="media-frame aspect-video bg-[#08141A] rounded border border-[#1B3442] overflow-hidden">
-                <img src="assets/workshop-event.jpg" alt="UoN Robotics Society workshop with students learning robotics" class="w-full h-full object-cover">
+                <img id="competition-image" src="assets/workshop-event.jpg" alt="UoN Robotics Society workshop with students learning robotics" class="w-full h-full object-cover">
             </div>
         </div>
     </section>
@@ -858,14 +859,14 @@
         <div class="mb-6 flex items-end justify-between gap-4">
             <div>
                 <h2 class="text-2xl sm:text-3xl font-bold mb-1">
-                    <span class="terminal-text">></span> Committee
+                    <span class="terminal-text">></span> <span id="committee-heading">Committee</span>
                 </h2>
                 <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
             </div>
-            <div class="scroll-hint" aria-hidden="true"><span>SCROLL TO EXPLORE</span><i class="fa-solid fa-arrow-right-long"></i></div>
+            <div class="scroll-hint" aria-hidden="true"><span id="committee-scroll-hint">SCROLL TO EXPLORE</span><i class="fa-solid fa-arrow-right-long"></i></div>
         </div>
         
-        <div class="committee-rail" tabindex="0" role="region" aria-label="Committee members. Scroll horizontally to see more.">
+        <div id="committee-rail" class="committee-rail" tabindex="0" role="region" aria-label="Committee members. Scroll horizontally to see more.">
             <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
                 <div class="committee-photo committee-photo--ywen mb-4" role="img" aria-label="Oh Yi Wen, RoboSoc Co-Founder and President"></div>
                 <div class="terminal-text font-bold mb-1">Oh Yi Wen</div>
@@ -933,13 +934,13 @@
     <section id="join" class="section-border rounded p-6 sm:p-8 bg-[#11232E]">
         <div class="max-w-2xl">
             <h2 class="text-2xl sm:text-3xl font-bold mb-4">
-                <span class="terminal-text">></span> Join RoboSoc
+                <span class="terminal-text">></span> <span id="join-heading">Join RoboSoc</span>
             </h2>
-            <p class="text-[#D6EEF4] mb-6 leading-relaxed">
+            <p id="join-body" class="text-[#D6EEF4] mb-6 leading-relaxed">
                 Get workshop access, equipment, mentorship and a place on our UniBots competition team. Zero experience required. Membership is purchased through the Students' Union.
             </p>
-            <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-8 py-3 rounded inline-flex items-center gap-2">
-                BUY_MEMBERSHIP! <i class="fa-solid fa-arrow-right text-xs"></i>
+            <a id="join-cta" href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-8 py-3 rounded inline-flex items-center gap-2" data-link="membership">
+                <span>BUY_MEMBERSHIP!</span> <i class="fa-solid fa-arrow-right text-xs"></i>
             </a>
         </div>
     </section>
@@ -950,23 +951,23 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="grid sm:grid-cols-3 gap-8 mb-8 text-sm">
             <div>
-                <div class="terminal-text font-bold mb-3">CONTACT</div>
-                <div class="space-y-2 text-[#7FA3B0]">
+                <div id="footer-contact-title" class="terminal-text font-bold mb-3">CONTACT</div>
+                <div id="footer-contact" class="space-y-2 text-[#7FA3B0]">
                     <div><i class="fa-solid fa-graduation-cap terminal-text" aria-hidden="true"></i> University of Nottingham</div>
                     <div><i class="fa-solid fa-message terminal-text" aria-hidden="true"></i> Message us on Discord or Instagram</div>
                 </div>
             </div>
             <div>
-                <div class="terminal-text font-bold mb-3">LINKS</div>
-                <div class="space-y-2 text-[#7FA3B0]">
+                <div id="footer-links-title" class="terminal-text font-bold mb-3">LINKS</div>
+                <div id="footer-links" class="space-y-2 text-[#7FA3B0]">
                     <div><a href="https://discord.gg/psgGx7FQn" target="_blank" rel="noopener" class="social-link hover:text-[#19C8E2]"><i class="fa-brands fa-discord terminal-text" aria-hidden="true"></i>Discord Server</a></div>
                     <div><a href="https://www.instagram.com/uon_robotics_society/" target="_blank" rel="noopener" class="social-link hover:text-[#19C8E2]"><i class="fa-brands fa-instagram terminal-text" aria-hidden="true"></i>Instagram</a></div>
                     <div><a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="social-link hover:text-[#19C8E2]"><i class="fa-solid fa-id-card terminal-text" aria-hidden="true"></i>Buy Membership</a></div>
                 </div>
             </div>
             <div>
-                <div class="terminal-text font-bold mb-3">EXPLORE</div>
-                <div class="space-y-2 text-[#7FA3B0]">
+                <div id="footer-explore-title" class="terminal-text font-bold mb-3">EXPLORE</div>
+                <div id="footer-explore" class="space-y-2 text-[#7FA3B0]">
                     <div><a href="#main" class="hover:text-[#19C8E2]">About RoboSoc</a></div>
                     <div><a href="#competition" class="hover:text-[#19C8E2]">UniBots Competition</a></div>
                     <div><a href="#committee" class="hover:text-[#19C8E2]">Meet the Committee</a></div>
@@ -975,8 +976,8 @@
         </div>
         
         <div class="border-t border-[#1B3442] pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#5A7A86]">
-            <p>&copy; 2026 ROBO&gt;SOC &bull; University Robotics Society</p>
-            <p>Built for students. Open to everyone.</p>
+            <p id="footer-copyright">&copy; 2026 ROBO&gt;SOC &bull; University Robotics Society</p>
+            <p id="footer-tagline">Built for students. Open to everyone.</p>
         </div>
     </div>
 </footer>
@@ -1022,6 +1023,7 @@
         });
     });
 </script>
+<script src="scripts/content.js" defer></script>
 <script src="scripts/events.js" defer></script>
 <script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
 </body>

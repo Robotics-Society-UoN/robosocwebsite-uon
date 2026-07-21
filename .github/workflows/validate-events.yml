@@ -1,15 +1,15 @@
-name: Validate events data
+name: Validate website content
 
 on:
   push:
     paths:
       - "data/**"
-      - "scripts/validate-events.mjs"
+      - "scripts/**"
       - ".github/workflows/validate-events.yml"
   pull_request:
     paths:
       - "data/**"
-      - "scripts/validate-events.mjs"
+      - "scripts/**"
       - ".github/workflows/validate-events.yml"
 
 permissions:
@@ -24,3 +24,4 @@ jobs:
         with:
           node-version: 22
       - run: node scripts/validate-events.mjs
+      - run: node scripts/validate-content.mjs

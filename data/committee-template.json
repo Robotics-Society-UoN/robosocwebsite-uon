@@ -1,0 +1,10 @@
+{
+  "id": "firstname-lastname",
+  "name": "Full Name",
+  "role": "Committee Role",
+  "course": "Year and Course",
+  "image": "assets/portrait-file.jpg",
+  "imageScale": 1,
+  "imagePosition": "50% 50%",
+  "published": false
+}
