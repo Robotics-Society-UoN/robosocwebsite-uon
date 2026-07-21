@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ROBO > SOC | University Robotics Society</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #061820;
+        --bg-light: #0E2C37;
+        --surface: #0B242E;
+        --surface-deep: #071D25;
+        --green: #3BE8F7;
+        --green-dark: #19C8DD;
+        --text: #F4FCFF;
+        --text-dim: #AED6DE;
+        --border: #2B6270;
+        --text-muted: #7CAAB4;
+        --shadow: 0 24px 70px rgba(0, 7, 10, 0.3);
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    html {
+        scroll-padding-top: 7rem;
+    }
+    
+    body {
+        font-family: 'JetBrains Mono', 'Space Mono', monospace;
+        background:
+            linear-gradient(rgba(59, 232, 247, 0.018) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59, 232, 247, 0.018) 1px, transparent 1px),
+            radial-gradient(circle at 50% -8rem, rgba(59, 232, 247, 0.16), transparent 37rem),
+            var(--bg);
+        background-size: 48px 48px, 48px 48px, auto, auto;
+        color: var(--text);
+        scroll-behavior: smooth;
+        min-height: 100vh;
+        text-rendering: optimizeLegibility;
+    }
+
+    ::selection { background: var(--green); color: #031116; }
+    
+    img, video, iframe, canvas, svg, table, pre {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .terminal-text {
+        color: var(--green);
+    }
+    
+    .btn-join {
+        background: var(--green);
+        color: #031116;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 0.65rem !important;
+        box-shadow: 0 8px 22px rgba(21, 196, 215, 0.16);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    
+    .btn-join:hover {
+        background: var(--green-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(50, 224, 244, 0.34);
+    }
+
+    .btn-join:focus-visible,
+    a:focus-visible,
+    button:focus-visible {
+        outline: 2px solid var(--green);
+        outline-offset: 4px;
+    }
+    
+    .nav-link {
+        color: var(--text);
+        position: relative;
+        transition: color 0.2s ease;
+        font-weight: 500;
+    }
+    
+    .nav-link:hover {
+        color: var(--green);
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 100%;
+        bottom: -0.45rem;
+        height: 2px;
+        background: var(--green);
+        transition: right 0.2s ease;
+    }
+
+    .nav-link:hover::after { right: 0; }
+    
+    .section-border {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        border: 1px solid rgba(66, 135, 150, 0.68);
+        border-radius: 1.25rem !important;
+        background: linear-gradient(145deg, rgba(19, 55, 66, 0.9), rgba(8, 31, 40, 0.95)) !important;
+        box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.035);
+        transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .section-border::before {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 2rem;
+        width: 6rem;
+        height: 1px;
+        background: var(--green);
+        box-shadow: 0 0 16px rgba(59, 232, 247, 0.7);
+    }
+
+    .section-border h2 {
+        letter-spacing: -0.045em;
+        text-wrap: balance;
+    }
+
+    .section-border .h-0\.5 {
+        height: 3px;
+        border-radius: 999px;
+        box-shadow: 0 0 12px rgba(59, 232, 247, 0.45);
+    }
+    
+    .event-row {
+        border-bottom: 1px solid var(--border);
+        transition: background 0.2s ease;
+    }
+    
+    .event-row:hover {
+        background: var(--bg-light);
+    }
+    
+    .event-row:last-child {
+        border-bottom: none;
+    }
+    
+    .cursor-blink::after {
+        content: '_';
+        animation: blink 1s step-end infinite;
+        color: var(--green);
+    }
+    
+    @keyframes blink {
+        50% { opacity: 0; }
+    }
+    
+    .logo-glitch {
+        position: relative;
+        font-weight: 800;
+    }
+    
+    .green-glow {
+        text-shadow: 0 0 12px rgba(50, 224, 244, 0.6);
+    }
+    
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--green);
+        color: #000;
+        padding: 8px;
+        text-decoration: none;
+        z-index: 100;
+        font-weight: 700;
+    }
+    
+    .skip-link:focus {
+        top: 0;
+    }
+
+    .section-border:hover {
+        border-color: rgba(59, 232, 247, 0.56);
+    }
+
+    /* Brighter brand palette while preserving the original utility classes. */
+    .bg-\[\#08141A\] { background-color: var(--bg) !important; }
+    .bg-\[\#11232E\] { background-color: var(--bg-light) !important; }
+    .text-\[\#D6EEF4\] { color: var(--text) !important; }
+    .text-\[\#7FA3B0\] { color: var(--text-dim) !important; }
+    .text-\[\#5A7A86\] { color: var(--text-muted) !important; }
+    .text-\[\#19C8E2\] { color: var(--green) !important; }
+    .bg-\[\#19C8E2\] { background-color: var(--green) !important; }
+    .border-\[\#1B3442\] { border-color: var(--border) !important; }
+    .border-\[\#19C8E2\] { border-color: var(--green) !important; }
+    .hover\:text-\[\#19C8E2\]:hover { color: var(--green) !important; }
+    .hover\:bg-\[\#11232E\]:hover { background-color: var(--bg-light) !important; }
+
+    header {
+        background: rgba(6, 24, 32, 0.88) !important;
+        border-color: rgba(59, 232, 247, 0.18) !important;
+        backdrop-filter: blur(18px) saturate(1.2);
+        box-shadow: 0 8px 35px rgba(0, 8, 12, 0.16);
+    }
+
+    .brand-logo {
+        width: 4rem;
+        height: 4rem;
+        border-color: var(--green) !important;
+        border-radius: 0.7rem !important;
+        box-shadow: 0 0 0 1px rgba(59, 232, 247, 0.12), 0 0 22px rgba(50, 224, 244, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .brand-logo:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0 0 1px rgba(59, 232, 247, 0.24), 0 0 28px rgba(50, 224, 244, 0.3);
+    }
+
+    .media-frame {
+        border-radius: 0.9rem !important;
+        border-color: rgba(90, 156, 169, 0.48) !important;
+        box-shadow: 0 14px 36px rgba(0, 8, 12, 0.25);
+    }
+
+    .media-frame img {
+        transition: transform 0.6s ease, filter 0.4s ease;
+        filter: saturate(0.92) contrast(1.04);
+    }
+
+    .media-frame:hover img {
+        transform: scale(1.025);
+        filter: saturate(1.04) contrast(1.04);
+    }
+
+    .committee-photo {
+        width: 6rem;
+        height: 6rem;
+        flex: 0 0 auto;
+        border: 1px solid var(--green);
+        border-radius: 9999px;
+        background-repeat: no-repeat;
+        background-size: 255% auto;
+        box-shadow: 0 0 0 5px rgba(59, 232, 247, 0.055), 0 0 22px rgba(50, 224, 244, 0.16);
+    }
+
+    .committee-photo--ywen {
+        background-image: url('assets/oh-yi-wen.webp');
+        background-position: 15% 41%;
+    }
+
+    .committee-photo--dylan {
+        background-image: url('assets/dylan-lim.webp');
+        background-position: 83% 41%;
+    }
+
+    .committee-photo--numa {
+        background-image: url('assets/numa-fecher.webp');
+        background-position: 15% 41%;
+    }
+
+    .committee-photo--dua {
+        background-image: url('assets/dua-eltaie.webp');
+        background-position: 83% 41%;
+    }
+
+    .committee-photo--nana {
+        background-image: url('assets/nana-yaw-asare-frimpong.webp');
+        background-position: 15% 41%;
+    }
+
+    .committee-photo--khoo {
+        background-image: url('assets/khoo-ning-en.webp');
+        background-position: 83% 41%;
+    }
+
+    .committee-photo--renato {
+        background-image: url('assets/renato-barra.webp');
+        background-position: 15% 41%;
+    }
+
+    .committee-photo--yashas {
+        background-image: url('assets/yashas-paluri.webp');
+        background-position: 83% 41%;
+    }
+
+    .committee-photo--liew {
+        background-image: url('assets/liew-hui-ling.webp');
+        background-position: 15% 41%;
+    }
+
+    .committee-photo--finian {
+        background-image: url('assets/finian-eagling.webp');
+        background-position: 83% 41%;
+    }
+
+    .committee-rail {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(280px, calc((100% - 2rem) / 3));
+        gap: 1rem;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: inline mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: var(--green) var(--bg);
+        padding: 0.2rem 0 1.15rem;
+    }
+
+    .committee-rail::-webkit-scrollbar {
+        height: 0.65rem;
+    }
+
+    .committee-rail::-webkit-scrollbar-track {
+        background: var(--bg);
+        border-radius: 9999px;
+    }
+
+    .committee-rail::-webkit-scrollbar-thumb {
+        background: var(--green);
+        border: 2px solid var(--bg);
+        border-radius: 9999px;
+    }
+
+    .committee-rail > div {
+        scroll-snap-align: start;
+        min-height: 15.5rem;
+        border-color: rgba(72, 129, 142, 0.48) !important;
+        border-radius: 0.9rem !important;
+        background: linear-gradient(155deg, rgba(7, 29, 37, 0.98), rgba(5, 23, 30, 0.98)) !important;
+        transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .committee-rail > div:hover {
+        transform: translateY(-3px);
+        border-color: rgba(59, 232, 247, 0.62) !important;
+        box-shadow: 0 14px 28px rgba(0, 8, 12, 0.24);
+    }
+
+    .committee-rail:focus-visible {
+        outline: 2px solid var(--green);
+        outline-offset: 0.35rem;
+    }
+
+    /* UNIBOTS highlighted card - use the brighter logo primary */
+    .unibots-highlight {
+        border-color: var(--green) !important;
+        box-shadow: 0 0 0 1px rgba(50, 224, 244, 0.2) inset,
+                    0 24px 70px rgba(0, 10, 14, 0.3),
+                    0 0 52px rgba(50, 224, 244, 0.055);
+    }
+
+    #unibots {
+        border-radius: 0.9rem !important;
+        background:
+            radial-gradient(circle at 100% 0, rgba(59, 232, 247, 0.12), transparent 15rem),
+            var(--surface-deep) !important;
+        box-shadow: inset 0 0 30px rgba(59, 232, 247, 0.025);
+    }
+
+    .scroll-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+    }
+
+    .scroll-hint i { color: var(--green); }
+
+    #join {
+        background:
+            radial-gradient(circle at 92% 40%, rgba(59, 232, 247, 0.17), transparent 22rem),
+            linear-gradient(145deg, rgba(17, 59, 70, 0.96), rgba(7, 29, 37, 0.98)) !important;
+    }
+
+    footer {
+        background: rgba(4, 18, 24, 0.68);
+        border-color: rgba(59, 232, 247, 0.16) !important;
+    }
+
+    footer a { transition: color 0.2s ease; }
+
+    footer .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+    }
+
+    /* Mobile layout: preserve the desktop system, only change flow and scale. */
+    @media (max-width: 768px) {
+        header nav > div:first-child {
+            height: 4.5rem;
+        }
+
+        .brand-logo {
+            width: 3.25rem !important;
+            height: 3.25rem !important;
+            flex: 0 0 auto;
+        }
+
+        #mobile-menu {
+            width: 100%;
+            background: rgba(6, 24, 32, 0.98);
+            border-color: rgba(59, 232, 247, 0.16) !important;
+        }
+
+        #mobile-menu .nav-link::after { display: none; }
+
+        #mobile-menu-btn {
+            min-width: 44px;
+            min-height: 44px;
+            flex: 0 0 auto;
+        }
+
+        #mobile-menu .nav-link,
+        #mobile-menu .btn-join {
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+        }
+
+        main {
+            padding-top: 1.25rem !important;
+            padding-bottom: 2rem !important;
+        }
+
+        main > .grid:first-child {
+            gap: 1.25rem !important;
+            margin-bottom: 1.25rem !important;
+        }
+
+        .section-border {
+            width: 100%;
+            min-width: 0;
+            border-radius: 1rem !important;
+        }
+
+        .section-border.p-6,
+        .section-border.sm\:p-8 {
+            padding: 1.25rem !important;
+        }
+
+        h2 {
+            font-size: 1.5rem !important;
+            line-height: 1.25;
+        }
+
+        h3 {
+            font-size: 1.1rem !important;
+        }
+
+        p {
+            line-height: 1.65;
+        }
+
+        #unibots .flex.items-start {
+            align-items: flex-start;
+        }
+
+        #unibots p,
+        #unibots a {
+            font-size: .875rem !important;
+        }
+
+        .event-row {
+            padding: .9rem .25rem !important;
+        }
+
+        .event-row .flex {
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+        }
+
+        .event-row .whitespace-nowrap {
+            white-space: nowrap !important;
+            margin-top: 0;
+        }
+
+        #competition .grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 1.5rem !important;
+        }
+
+        #competition .aspect-video {
+            order: -1;
+        }
+
+        #competition .space-y-3 > div {
+            line-height: 1.55;
+        }
+
+        #committee {
+            margin-bottom: 1.25rem !important;
+        }
+
+        #committee .committee-rail {
+            grid-template-columns: none !important;
+            grid-auto-columns: minmax(260px, 82vw);
+            gap: .75rem !important;
+        }
+
+        #committee .committee-rail > div {
+            min-width: 0;
+            padding: 1rem !important;
+            min-height: 13rem;
+        }
+
+        #committee .committee-photo {
+            width: 5rem !important;
+            height: 5rem !important;
+        }
+
+        #join {
+            margin-top: 0;
+        }
+
+        .btn-join {
+            min-height: 48px;
+            padding: .8rem 1.1rem !important;
+            font-size: .875rem !important;
+            text-align: center;
+        }
+
+        footer .grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 1.5rem !important;
+        }
+
+        footer .grid > div {
+            min-width: 0;
+        }
+
+        .scroll-hint span { display: none; }
+    }
+
+    @media (max-width: 480px) {
+        .logo-text {
+            font-size: 1.45rem !important;
+        }
+
+        header .gap-4 {
+            gap: .65rem !important;
+        }
+
+        main,
+        header nav,
+        footer > div {
+            padding-left: .75rem !important;
+            padding-right: .75rem !important;
+        }
+
+        .section-border.p-6,
+        .section-border.sm\:p-8 {
+            padding: 1rem !important;
+        }
+
+        #committee .committee-rail {
+            grid-template-columns: none !important;
+            grid-auto-columns: minmax(250px, 88%);
+        }
+
+        #committee .committee-rail > div {
+            display: grid;
+            grid-template-columns: 5rem minmax(0, 1fr);
+            column-gap: 1rem;
+            align-items: center;
+        }
+
+        #committee .committee-photo {
+            grid-row: 1 / span 3;
+            margin-bottom: 0 !important;
+        }
+
+        .event-row .font-bold {
+            font-size: .875rem;
+        }
+
+        .event-row .text-xs {
+            font-size: .7rem;
+        }
+
+        .event-row .terminal-text {
+            font-size: .75rem;
+        }
+
+        .section-border::before {
+            left: 1rem;
+            width: 4rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Header -->
+<header class="border-b-2 border-[#1B3442] sticky top-0 z-50 bg-[#08141A]">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center gap-4">
+                <a href="#main" aria-label="RoboSoc home">
+                    <img src="assets/robosoc-logo.jpg" alt="UoN Robotics Society logo" class="brand-logo rounded border object-cover">
+                </a>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#calendar" class="nav-link">Calendar</a>
+                <a href="#unibots" class="nav-link">UniBots</a>
+                <a href="#committee" class="nav-link">Committee</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-2.5 rounded inline-flex items-center gap-2">
+                    JOIN US!
+                </a>
+            </div>
+            
+            <button id="mobile-menu-btn" class="md:hidden p-2 hover:bg-[#11232E] rounded" aria-label="Toggle menu" aria-expanded="false">
+                <i class="fa-solid fa-bars text-2xl text-[#19C8E2]"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-[#1B3442] mt-2">
+            <div class="flex flex-col gap-4 pt-4">
+                <a href="#calendar" class="nav-link py-2">Calendar</a>
+                <a href="#unibots" class="nav-link py-2">UniBots</a>
+                <a href="#committee" class="nav-link py-2">Committee</a>
+                <a href="#contact" class="nav-link py-2">Contact</a>
+                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-3 rounded text-center">JOIN US!</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main id="main" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+    <!-- Two Column Layout: Who are we + What's on -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-12">
+        <!-- Who are we? -->
+        <section class="section-border rounded p-6 sm:p-8 bg-[#11232E]">
+            <div class="mb-6">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-1">
+                    <span class="terminal-text">></span> Who are we?
+                </h2>
+                <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
+            </div>
+            
+            <div class="space-y-4 text-[#D6EEF4] leading-relaxed">
+                <p>
+                    <span class="terminal-text font-bold cursor-blink">RoboSoc</span> is the university's robotics society. We build autonomous robots, run workshops, and compete nationally.
+                </p>
+                <p>
+                    No experience? Perfect. We teach Arduino, CAD, computer vision, and ML for robotics from zero. Weekly build nights, parts provided, mentors on-hand.
+                </p>
+                <p>
+                    Our flagship focus is <span class="terminal-text font-bold">UniBots</span> &mdash; we give every member the teaching, materials and team support needed to build a competition robot.
+                </p>
+                <p class="text-[#7FA3B0] text-sm pt-2 border-t border-[#1B3442]">
+                    > All skill levels welcome<br>
+                    > No application process<br>
+                    > Open to all students
+                </p>
+            </div>
+            
+            <div class="media-frame mt-6 aspect-video bg-[#08141A] rounded border border-[#1B3442] flex items-center justify-center overflow-hidden">
+                <img src="assets/committee-group.png" alt="UoN Robotics Society members together at a society event" class="w-full h-full object-cover opacity-90">
+            </div>
+        </section>
+        
+        <!-- What's on? -->
+        <section id="calendar" class="section-border rounded p-6 sm:p-8 bg-[#11232E]">
+            <div class="mb-6">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-1">
+                    <span class="terminal-text">></span> What's on?
+                </h2>
+                <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
+            </div>
+            
+            <!-- Featured: UniBots -->
+            <div id="unibots" class="mb-6 p-4 border-2 border-[#19C8E2] rounded bg-[#08141A]">
+                <div class="flex items-start gap-3 mb-2">
+                    <i class="fa-solid fa-trophy terminal-text text-xl mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold terminal-text green-glow">UNIBOTS</h3>
+                        <p class="text-sm text-[#7FA3B0]">Dates and venue to be announced</p>
+                    </div>
+                </div>
+                <p class="text-sm text-[#D6EEF4] mb-3">
+                    Our main competition project. Learn the skills, join a team and build a robot with all teaching and materials provided by RoboSoc.
+                </p>
+                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-[#19C8E2] font-bold text-sm hover:underline">
+                    REGISTER NOW <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+            
+        </section>
+    </div>
+    
+    <!-- Competition: main draw -->
+    <section id="competition" class="section-border unibots-highlight rounded p-6 sm:p-8 bg-[#11232E] mb-12">
+        <div class="grid lg:grid-cols-2 gap-8 items-center">
+            <div>
+                <div class="mb-6">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-1"><span class="terminal-text">></span> Build. Learn. Compete.</h2>
+                    <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
+                </div>
+                <p class="text-[#D6EEF4] leading-relaxed mb-6">We teach every skill and provide every material you need to build a robot for UniBots. No application, no prior experience &mdash; everyone is welcome.</p>
+                <div class="space-y-3 text-sm mb-6">
+                    <div><span class="terminal-text font-bold">> SKILLS_TAUGHT</span> &mdash; Arduino, CAD, coding, electronics and machining.</div>
+                    <div><span class="terminal-text font-bold">> MATERIALS_PROVIDED</span> &mdash; Tools, parts and resources are included.</div>
+                    <div><span class="terminal-text font-bold">> OPEN_TO_EVERYONE</span> &mdash; Beginners and experienced builders join alike.</div>
+                </div>
+                <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-6 py-3 rounded inline-flex items-center gap-2">JOIN THE TEAM <i class="fa-solid fa-arrow-right text-xs"></i></a>
+            </div>
+            <div class="media-frame aspect-video bg-[#08141A] rounded border border-[#1B3442] overflow-hidden">
+                <img src="assets/workshop-event.jpg" alt="UoN Robotics Society workshop with students learning robotics" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </section>
+
+    <!-- Committee -->
+    <section id="committee" class="section-border rounded p-6 sm:p-8 bg-[#11232E] mb-12">
+        <div class="mb-6 flex items-end justify-between gap-4">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold mb-1">
+                    <span class="terminal-text">></span> Committee
+                </h2>
+                <div class="h-0.5 w-16 bg-[#19C8E2] mt-2"></div>
+            </div>
+            <div class="scroll-hint" aria-hidden="true"><span>SCROLL TO EXPLORE</span><i class="fa-solid fa-arrow-right-long"></i></div>
+        </div>
+        
+        <div class="committee-rail" tabindex="0" role="region" aria-label="Committee members. Scroll horizontally to see more.">
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--ywen mb-4" role="img" aria-label="Oh Yi Wen, RoboSoc Co-Founder and President"></div>
+                <div class="terminal-text font-bold mb-1">Oh Yi Wen</div>
+                <div class="text-sm text-[#7FA3B0]">Co-Founder &amp; President</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 2 Electrical &amp; Electronic Engineering</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--dylan mb-4" role="img" aria-label="Dylan Lim, RoboSoc Co-Founder and Vice President"></div>
+                <div class="terminal-text font-bold mb-1">Dylan Lim</div>
+                <div class="text-sm text-[#7FA3B0]">Co-Founder &amp; Vice President</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--numa mb-4" role="img" aria-label="Numa Fecher, RoboSoc General Secretary"></div>
+                <div class="terminal-text font-bold mb-1">Numa Fecher</div>
+                <div class="text-sm text-[#7FA3B0]">General Secretary</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--dua mb-4" role="img" aria-label="Dua Eltaie, RoboSoc Treasurer"></div>
+                <div class="terminal-text font-bold mb-1">Dua Eltaie</div>
+                <div class="text-sm text-[#7FA3B0]">Treasurer</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 4 Economics</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--nana mb-4" role="img" aria-label="Nana Yaw Asare Frimpong, RoboSoc Technical Officer"></div>
+                <div class="terminal-text font-bold mb-1">Nana Yaw Asare Frimpong</div>
+                <div class="text-sm text-[#7FA3B0]">Technical Officer</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 3 Electrical &amp; Electronic Engineering</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--khoo mb-4" role="img" aria-label="Khoo Ning En, RoboSoc Technical Officer"></div>
+                <div class="terminal-text font-bold mb-1">Khoo Ning En</div>
+                <div class="text-sm text-[#7FA3B0]">Technical Officer</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 2 Electrical &amp; Electronic Engineering</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--renato mb-4" role="img" aria-label="Renato Ignacio Barra Faúndez, RoboSoc Technical Officer"></div>
+                <div class="terminal-text font-bold mb-1">Renato Ignacio Barra Faúndez</div>
+                <div class="text-sm text-[#7FA3B0]">Technical Officer</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 1 Civil Engineering</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--yashas mb-4" role="img" aria-label="Yashas Paluri, RoboSoc Marketing Officer"></div>
+                <div class="terminal-text font-bold mb-1">Yashas Paluri</div>
+                <div class="text-sm text-[#7FA3B0]">Marketing Officer</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--liew mb-4" role="img" aria-label="Liew Hui Ling, RoboSoc Marketing Officer"></div>
+                <div class="terminal-text font-bold mb-1">Liew Hui Ling</div>
+                <div class="text-sm text-[#7FA3B0]">Marketing Officer</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 2 Electrical &amp; Electronic Engineering</div>
+            </div>
+            <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
+                <div class="committee-photo committee-photo--finian mb-4" role="img" aria-label="Finian Eagling, RoboSoc Wellbeing Officer"></div>
+                <div class="terminal-text font-bold mb-1">Finian Eagling</div>
+                <div class="text-sm text-[#7FA3B0]">Wellbeing Officer</div>
+                <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Join CTA -->
+    <section id="join" class="section-border rounded p-6 sm:p-8 bg-[#11232E]">
+        <div class="max-w-2xl">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-4">
+                <span class="terminal-text">></span> Join RoboSoc
+            </h2>
+            <p class="text-[#D6EEF4] mb-6 leading-relaxed">
+                Get workshop access, equipment, mentorship and a place on our UniBots competition team. Zero experience required. Membership is purchased through the Students' Union.
+            </p>
+            <a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="btn-join px-8 py-3 rounded inline-flex items-center gap-2">
+                BUY_MEMBERSHIP! <i class="fa-solid fa-arrow-right text-xs"></i>
+            </a>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer id="contact" class="border-t-2 border-[#1B3442] mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid sm:grid-cols-3 gap-8 mb-8 text-sm">
+            <div>
+                <div class="terminal-text font-bold mb-3">CONTACT</div>
+                <div class="space-y-2 text-[#7FA3B0]">
+                    <div><i class="fa-solid fa-graduation-cap terminal-text" aria-hidden="true"></i> University of Nottingham</div>
+                    <div><i class="fa-solid fa-message terminal-text" aria-hidden="true"></i> Message us on Discord or Instagram</div>
+                </div>
+            </div>
+            <div>
+                <div class="terminal-text font-bold mb-3">LINKS</div>
+                <div class="space-y-2 text-[#7FA3B0]">
+                    <div><a href="https://discord.gg/psgGx7FQn" target="_blank" rel="noopener" class="social-link hover:text-[#19C8E2]"><i class="fa-brands fa-discord terminal-text" aria-hidden="true"></i>Discord Server</a></div>
+                    <div><a href="https://www.instagram.com/uon_robotics_society/" target="_blank" rel="noopener" class="social-link hover:text-[#19C8E2]"><i class="fa-brands fa-instagram terminal-text" aria-hidden="true"></i>Instagram</a></div>
+                    <div><a href="https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership" target="_blank" rel="noopener" class="social-link hover:text-[#19C8E2]"><i class="fa-solid fa-id-card terminal-text" aria-hidden="true"></i>Buy Membership</a></div>
+                </div>
+            </div>
+            <div>
+                <div class="terminal-text font-bold mb-3">EXPLORE</div>
+                <div class="space-y-2 text-[#7FA3B0]">
+                    <div><a href="#main" class="hover:text-[#19C8E2]">About RoboSoc</a></div>
+                    <div><a href="#competition" class="hover:text-[#19C8E2]">UniBots Competition</a></div>
+                    <div><a href="#committee" class="hover:text-[#19C8E2]">Meet the Committee</a></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-[#1B3442] pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#5A7A86]">
+            <p>&copy; 2026 ROBO&gt;SOC &bull; University Robotics Society</p>
+            <p>Built for students. Open to everyone.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+        mobileMenuBtn.innerHTML = isOpen 
+            ? '<i class="fa-solid fa-bars text-2xl text-[#19C8E2]"></i>' 
+            : '<i class="fa-solid fa-xmark text-2xl text-[#19C8E2]"></i>';
+    });
+    
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileMenuBtn.innerHTML = '<i class="fa-solid fa-bars text-2xl text-[#19C8E2]"></i>';
+        });
+    });
+    
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const offset = 100;
+                const targetPosition = target.offsetTop - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+<script>(function(){document.addEventListener("click",function(e){var a=e.target.closest("[data-product-id]");if(!a)return;e.preventDefault();var pid=a.getAttribute("data-product-id");if(pid)parent.postMessage({type:"ecto-artifact-link-click",productId:pid},"*")})})();</script>
+</body>
+</html>
