@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/AyushGupta05/robosocwebsite-uon/blob/main/data/events.schema.json",
+  "title": "RoboSoc events",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "version", "events"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "events": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/event" }
+    }
+  },
+  "$defs": {
+    "nullableDateTime": {
+      "anyOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "summary",
+        "startDate",
+        "endDate",
+        "dateLabel",
+        "timeLabel",
+        "location",
+        "registrationUrl",
+        "ctaLabel",
+        "image",
+        "featured",
+        "published",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 500 },
+        "startDate": { "$ref": "#/$defs/nullableDateTime" },
+        "endDate": { "$ref": "#/$defs/nullableDateTime" },
+        "dateLabel": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "timeLabel": { "type": "string", "maxLength": 80 },
+        "location": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "registrationUrl": {
+          "type": "string",
+          "pattern": "^https?://"
+        },
+        "ctaLabel": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "image": {
+          "anyOf": [
+            { "type": "string", "pattern": "^assets/[A-Za-z0-9][A-Za-z0-9._/-]*$" },
+            { "type": "null" }
+          ]
+        },
+        "featured": { "type": "boolean" },
+        "published": { "type": "boolean" },
+        "tags": {
+          "type": "array",
+          "maxItems": 8,
+          "items": { "type": "string", "minLength": 1, "maxLength": 40 }
+        }
+      }
+    }
+  }
+}

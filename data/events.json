@@ -1,0 +1,25 @@
+{
+  "$schema": "./events.schema.json",
+  "version": 1,
+  "events": [
+    {
+      "id": "unibots",
+      "title": "UniBots",
+      "summary": "Our main competition project. Learn the skills, join a team and build a robot with all teaching and materials provided by RoboSoc.",
+      "startDate": null,
+      "endDate": null,
+      "dateLabel": "Dates to be announced",
+      "timeLabel": "",
+      "location": "Venue to be announced",
+      "registrationUrl": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership",
+      "ctaLabel": "Register now",
+      "image": null,
+      "featured": true,
+      "published": true,
+      "tags": [
+        "Competition",
+        "All skill levels"
+      ]
+    }
+  ]
+}
