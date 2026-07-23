@@ -3,7 +3,7 @@
   "title": "RoboSoc website content",
   "description": "Editable copy, links and images for the fixed RoboSoc website layout.",
   "type": "object",
-  "required": ["version", "meta", "brand", "navigation", "links", "about", "calendar", "competition", "committee", "join", "footer"],
+  "required": ["version", "meta", "brand", "navigation", "links", "about", "calendar", "competition", "committee", "footer"],
   "properties": {
     "$schema": { "type": "string" },
     "version": { "const": 1 },
@@ -22,7 +22,6 @@
     "calendar": { "type": "object" },
     "competition": { "type": "object" },
     "committee": { "type": "object" },
-    "join": { "type": "object" },
     "footer": { "type": "object" }
   },
   "$defs": {

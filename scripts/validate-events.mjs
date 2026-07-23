@@ -35,7 +35,7 @@ for (const [index, event] of (document.events || []).entries()) {
     ids.add(event.id);
   }
 
-  for (const field of ["title", "summary", "dateLabel", "location", "ctaLabel"]) {
+  for (const field of ["title", "summary", "dateLabel", "location"]) {
     if (typeof event[field] !== "string" || !event[field].trim()) {
       errors.push(`${label}.${field} must contain text`);
     }
@@ -52,11 +52,20 @@ for (const [index, event] of (document.events || []).entries()) {
     errors.push(`${label}.endDate must not be before startDate`);
   }
 
-  try {
-    const registrationUrl = new URL(event.registrationUrl);
-    if (!['http:', 'https:'].includes(registrationUrl.protocol)) throw new Error();
-  } catch {
-    errors.push(`${label}.registrationUrl must be a full http(s) URL`);
+  const hasRegistrationUrl = event.registrationUrl !== null;
+  const hasCtaLabel = event.ctaLabel !== null;
+  if (hasRegistrationUrl !== hasCtaLabel) {
+    errors.push(`${label}.registrationUrl and ${label}.ctaLabel must either both be set or both be null`);
+  } else if (hasRegistrationUrl) {
+    try {
+      const registrationUrl = new URL(event.registrationUrl);
+      if (!['http:', 'https:'].includes(registrationUrl.protocol)) throw new Error();
+    } catch {
+      errors.push(`${label}.registrationUrl must be a full http(s) URL or null`);
+    }
+    if (typeof event.ctaLabel !== "string" || !event.ctaLabel.trim()) {
+      errors.push(`${label}.ctaLabel must contain text when registrationUrl is set`);
+    }
   }
 
   if (typeof event.featured !== "boolean") errors.push(`${label}.featured must be true or false`);

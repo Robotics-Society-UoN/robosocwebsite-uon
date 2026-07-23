@@ -61,15 +61,22 @@
         appendHighlightedText(item, paragraph);
         copy.append(item);
       });
+    }
 
-      const bullets = document.createElement("p");
-      bullets.id = "about-bullets";
-      bullets.className = "text-[#7FA3B0] text-sm pt-2 border-t border-[#1B3442]";
-      (about.bullets || []).forEach((bullet, index) => {
-        if (index) bullets.append(document.createElement("br"));
-        bullets.append(document.createTextNode(`> ${bullet}`));
+    const bullets = byId("about-bullets");
+    if (bullets && Array.isArray(about.bullets)) {
+      bullets.replaceChildren();
+      about.bullets.forEach((bullet) => {
+        const [rawLabel, ...rawText] = String(bullet).split(":");
+        const item = document.createElement("div");
+        item.className = "about-highlight";
+        const label = document.createElement("strong");
+        label.textContent = rawText.length ? rawLabel.trim() : ">";
+        const text = document.createElement("span");
+        text.textContent = rawText.length ? rawText.join(":").trim() : rawLabel.trim();
+        item.append(label, text);
+        bullets.append(item);
       });
-      copy.append(bullets);
     }
 
     const image = byId("about-image");
@@ -93,8 +100,6 @@
         points.append(row);
       });
     }
-    const button = byId("competition-cta")?.querySelector("span");
-    if (button) button.textContent = competition.buttonLabel;
     const image = byId("competition-image");
     const src = safeAsset(competition.image);
     if (image && src) image.src = src;
@@ -109,7 +114,7 @@
     rail.replaceChildren();
     members.forEach((member) => {
       const card = document.createElement("div");
-      card.className = "p-5 border border-[#1B3442] rounded bg-[#08141A]";
+      card.className = "committee-member";
 
       const photo = document.createElement("div");
       photo.className = "committee-photo mb-4";
@@ -125,10 +130,7 @@
       const role = document.createElement("div");
       role.className = "text-sm text-[#7FA3B0]";
       role.textContent = member.role;
-      const course = document.createElement("div");
-      course.className = "text-xs text-[#5A7A86] mt-2";
-      course.textContent = member.course;
-      card.append(photo, name, role, course);
+      card.append(photo, name, role);
       rail.append(card);
     });
   }
@@ -190,10 +192,11 @@
     const description = document.querySelector('meta[name="description"]');
     if (description && site.meta?.description) description.content = site.meta.description;
 
-    const logo = byId("brand-logo");
     const logoPath = safeAsset(site.brand?.logo);
-    if (logo && logoPath) logo.src = logoPath;
-    if (logo && site.brand?.logoAlt) logo.alt = site.brand.logoAlt;
+    document.querySelectorAll("[data-brand-logo]").forEach((logo) => {
+      if (logoPath) logo.src = logoPath;
+      if (site.brand?.logoAlt) logo.alt = site.brand.logoAlt;
+    });
 
     Object.entries(site.navigation || {}).forEach(([key, label]) => {
       document.querySelectorAll(`[data-nav="${key}"]`).forEach((node) => {
@@ -202,16 +205,14 @@
     });
     const membership = safeUrl(site.links?.membership);
     if (membership) document.querySelectorAll('[data-link="membership"]').forEach((link) => { link.href = membership; });
+    const discord = safeUrl(site.links?.discord);
+    if (discord) document.querySelectorAll('[data-link="discord"]').forEach((link) => { link.href = discord; });
 
     renderAbout(site.about || {});
     setText("calendar-heading", site.calendar?.heading);
     renderCompetition(site.competition || {});
     setText("committee-heading", site.committee?.heading);
     setText("committee-scroll-hint", site.committee?.scrollHint);
-    setText("join-heading", site.join?.heading);
-    setText("join-body", site.join?.body);
-    const joinLabel = byId("join-cta")?.querySelector("span");
-    if (joinLabel) joinLabel.textContent = site.join?.buttonLabel;
     renderFooter(site.footer || {});
   }
 
