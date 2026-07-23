@@ -17,55 +17,48 @@
     "join": "JOIN US!"
   },
   "links": {
-    "membership": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership"
+    "membership": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership",
+    "discord": "https://discord.gg/psgGx7FQn"
   },
   "about": {
     "heading": "Who are we?",
     "paragraphs": [
-      "[[RoboSoc]] is the university's robotics society. We build autonomous robots, run workshops, and compete nationally.",
-      "No experience? Perfect. We teach Arduino, CAD, computer vision, and ML for robotics from zero. Weekly build nights, parts provided, mentors on-hand.",
-      "Our flagship focus is [[UniBots]] — we give every member the teaching, materials and team support needed to build a competition robot."
+      "[[RoboSoc]] brings curious students together to turn ideas into working robots. Meet builders, find a team and learn at your own pace."
     ],
     "bullets": [
-      "All skill levels welcome",
-      "No application process",
-      "Open to all students"
+      "MEET: Weekly build nights",
+      "EXPLORE: Hands-on projects",
+      "BELONG: Any course, any level"
     ],
-    "image": "assets/committee-group.png",
-    "imageAlt": "UoN Robotics Society members together at a society event"
+    "image": "assets/unibots-action.jpg",
+    "imageAlt": "RoboSoc members testing a robot together at UniBots"
   },
   "calendar": {
     "heading": "What's on?"
   },
   "competition": {
     "heading": "Build. Learn. Compete.",
-    "body": "We teach every skill and provide every material you need to build a robot for UniBots. No application, no prior experience — everyone is welcome.",
+    "body": "Everything needed to compete is included: guided teaching, tools, parts and a team. No application or prior experience required.",
     "points": [
       {
         "label": "SKILLS_TAUGHT",
         "text": "Arduino, CAD, coding, electronics and machining."
       },
       {
-        "label": "MATERIALS_PROVIDED",
-        "text": "Tools, parts and resources are included."
+        "label": "KIT_INCLUDED",
+        "text": "Tools, parts and resources for your build."
       },
       {
-        "label": "OPEN_TO_EVERYONE",
-        "text": "Beginners and experienced builders join alike."
+        "label": "TEAM_SUPPORT",
+        "text": "Mentors and regular build sessions."
       }
     ],
-    "buttonLabel": "JOIN THE TEAM",
     "image": "assets/workshop-event.jpg",
-    "imageAlt": "UoN Robotics Society workshop with students learning robotics"
+    "imageAlt": "RoboSoc workshop with students learning robotics together"
   },
   "committee": {
     "heading": "Committee",
     "scrollHint": "SCROLL TO EXPLORE"
-  },
-  "join": {
-    "heading": "Join RoboSoc",
-    "body": "Get workshop access, equipment, mentorship and a place on our UniBots competition team. Zero experience required. Membership is purchased through the Students' Union.",
-    "buttonLabel": "BUY_MEMBERSHIP!"
   },
   "footer": {
     "contactTitle": "CONTACT",

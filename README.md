@@ -6,9 +6,9 @@ Official website for the University of Nottingham Robotics Society (RoboSoc). Th
 
 You do not need a database, Supabase or an admin dashboard. Repository collaborators can update the live website using GitHub's text editor:
 
-- [Edit general website text, links and images](https://github.com/AyushGupta05/robosocwebsite-uon/edit/main/data/site.json)
-- [Edit committee members](https://github.com/AyushGupta05/robosocwebsite-uon/edit/main/data/committee.json)
-- [Edit events](https://github.com/AyushGupta05/robosocwebsite-uon/edit/main/data/events.json)
+- [Edit general website text, links and images](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/site.json)
+- [Edit committee members](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/committee.json)
+- [Edit events](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/events.json)
 
 Commit the edit to `main`. GitHub Pages will publish it automatically if Pages is configured for this repository. Only the owner and invited collaborators with write access can commit.
 

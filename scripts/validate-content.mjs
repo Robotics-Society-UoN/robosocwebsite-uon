@@ -63,6 +63,7 @@ if (site) {
     required(site.navigation?.[key], `site.navigation.${key}`);
   }
   checkUrl(site.links?.membership, "site.links.membership");
+  checkUrl(site.links?.discord, "site.links.discord");
 
   required(site.about?.heading, "site.about.heading");
   if (checkList(site.about?.paragraphs, "site.about.paragraphs")) {
@@ -77,7 +78,6 @@ if (site) {
 
   required(site.competition?.heading, "site.competition.heading");
   required(site.competition?.body, "site.competition.body");
-  required(site.competition?.buttonLabel, "site.competition.buttonLabel");
   await checkAsset(site.competition?.image, "site.competition.image");
   required(site.competition?.imageAlt, "site.competition.imageAlt");
   if (checkList(site.competition?.points, "site.competition.points")) {
@@ -89,9 +89,6 @@ if (site) {
 
   required(site.committee?.heading, "site.committee.heading");
   required(site.committee?.scrollHint, "site.committee.scrollHint");
-  required(site.join?.heading, "site.join.heading");
-  required(site.join?.body, "site.join.body");
-  required(site.join?.buttonLabel, "site.join.buttonLabel");
 
   const footer = site.footer || {};
   for (const key of ["contactTitle", "linksTitle", "exploreTitle", "copyright", "tagline"]) {

@@ -6,14 +6,14 @@ Only the repository owner and invited GitHub collaborators with write access can
 
 ## General text, links and section images
 
-Open [`site.json`](https://github.com/AyushGupta05/robosocwebsite-uon/edit/main/data/site.json), replace text between the quotation marks, then use **Commit changes**.
+Open [`site.json`](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/site.json), replace text between the quotation marks, then use **Commit changes**.
 
 This file controls:
 
 - browser title and description;
 - logo and section images;
 - navigation labels;
-- About, Calendar, Competition, Committee and Join section copy;
+- About, Calendar, Competition and Committee section copy;
 - membership, Discord and Instagram links;
 - footer text and links.
 
@@ -22,7 +22,7 @@ Use `[[double brackets]]` inside an About paragraph to apply the existing cyan h
 ## Committee members
 
 1. Upload the new portrait into the repository's [`assets/`](../assets) folder.
-2. Open [`committee.json`](https://github.com/AyushGupta05/robosocwebsite-uon/edit/main/data/committee.json).
+2. Open [`committee.json`](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/committee.json).
 3. Copy the object in [`committee-template.json`](./committee-template.json) into the `members` list.
 4. Change the `id`, `name`, `role`, `course` and `image` values.
 5. Set `published` to `true` and commit.
@@ -31,13 +31,13 @@ For a normal standalone portrait, keep `imageScale` at `1` and `imagePosition` a
 
 ## Events
 
-1. Open [`events.json`](https://github.com/AyushGupta05/robosocwebsite-uon/edit/main/data/events.json).
+1. Open [`events.json`](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/events.json).
 2. Copy the object from [`event-template.json`](./event-template.json).
 3. Paste it inside the `events` list, adding a comma after the previous event.
 4. Replace the template text and set `published` to `true` when ready.
 5. Commit the change.
 
-Event fields include the public title and summary, start/end dates, display labels, location, registration link, optional image, tags and featured status. Set `image` or an unknown date to `null` when it is not available.
+Event fields include the public title and summary, start/end dates, display labels, location, optional registration link, optional image, tags and featured status. Set both `registrationUrl` and `ctaLabel` to `null` when an event should not show a registration action. Set `image` or an unknown date to `null` when it is not available.
 
 ## Images
 

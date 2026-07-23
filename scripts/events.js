@@ -34,9 +34,7 @@
             && typeof event.title === 'string'
             && typeof event.summary === 'string'
             && typeof event.dateLabel === 'string'
-            && typeof event.location === 'string'
-            && typeof event.registrationUrl === 'string'
-            && typeof event.ctaLabel === 'string';
+            && typeof event.location === 'string';
     }
 
     function createEventCard(event) {
@@ -84,7 +82,7 @@
         }
 
         const href = safeHttpUrl(event.registrationUrl);
-        if (href) {
+        if (href && typeof event.ctaLabel === 'string' && event.ctaLabel.trim()) {
             const link = document.createElement('a');
             link.className = 'event-card__link';
             link.href = href;

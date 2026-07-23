@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/AyushGupta05/robosocwebsite-uon/blob/main/data/events.schema.json",
+  "$id": "https://github.com/Robotics-Society-UoN/robosocwebsite-uon/blob/main/data/events.schema.json",
   "title": "RoboSoc events",
   "type": "object",
   "additionalProperties": false,
@@ -52,10 +52,17 @@
         "timeLabel": { "type": "string", "maxLength": 80 },
         "location": { "type": "string", "minLength": 1, "maxLength": 160 },
         "registrationUrl": {
-          "type": "string",
-          "pattern": "^https?://"
+          "anyOf": [
+            { "type": "string", "pattern": "^https?://" },
+            { "type": "null" }
+          ]
         },
-        "ctaLabel": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "ctaLabel": {
+          "anyOf": [
+            { "type": "string", "minLength": 1, "maxLength": 40 },
+            { "type": "null" }
+          ]
+        },
         "image": {
           "anyOf": [
             { "type": "string", "pattern": "^assets/[A-Za-z0-9][A-Za-z0-9._/-]*$" },

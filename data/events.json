@@ -3,23 +3,20 @@
   "version": 1,
   "events": [
     {
-      "id": "unibots",
-      "title": "UniBots",
-      "summary": "Our main competition project. Learn the skills, join a team and build a robot with all teaching and materials provided by RoboSoc.",
+      "id": "freshers-stall",
+      "title": "Freshers' Stall",
+      "summary": "Come and meet us at David Ross Sports Centre. Chat with the committee, discover our projects and find out how to get involved with RoboSoc.",
       "startDate": null,
       "endDate": null,
-      "dateLabel": "Dates to be announced",
+      "dateLabel": "Date and time to be announced",
       "timeLabel": "",
-      "location": "Venue to be announced",
-      "registrationUrl": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership",
-      "ctaLabel": "Register now",
+      "location": "David Ross Sports Centre",
+      "registrationUrl": null,
+      "ctaLabel": null,
       "image": null,
-      "featured": true,
+      "featured": false,
       "published": true,
-      "tags": [
-        "Competition",
-        "All skill levels"
-      ]
+      "tags": []
     }
   ]
 }
