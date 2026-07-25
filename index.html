@@ -5,12 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ROBO &gt; SOC | University Robotics Society</title>
 <meta name="description" content="University of Nottingham Robotics Society: workshops, robotics projects and the UniBots competition, open to every student.">
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/robosoc-logo.jpg" type="image/jpeg">
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/tailwind.min.css">
 <style>
+    @font-face {
+        font-family: 'JetBrains Mono';
+        src: url('assets/fonts/jetbrains-mono-latin.woff2') format('woff2');
+        font-style: normal;
+        font-weight: 400 800;
+        font-display: swap;
+    }
+
     :root {
         --bg: #171F22;
         --bg-light: #252F33;
@@ -41,7 +47,7 @@
     }
     
     body {
-        font-family: 'JetBrains Mono', 'Space Mono', monospace;
+        font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
         background-color: var(--bg);
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M48 0H0V48' fill='none' stroke='%23AFC0C5' stroke-opacity='.07' stroke-width='1'/%3E%3C/svg%3E");
         background-size: 48px 48px;
@@ -61,6 +67,31 @@
     .terminal-text {
         color: var(--green);
     }
+
+    /* Tiny local icon set: avoids downloading the complete Font Awesome CSS and fonts. */
+    .fa-solid,
+    .fa-regular,
+    .fa-brands {
+        display: inline-block;
+        width: 1.15em;
+        font-style: normal;
+        font-weight: 800;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .fa-xmark::before { content: "\00D7"; }
+    .fa-bars::before { content: "\2630"; }
+    .fa-calendar::before { content: "\25A3"; }
+    .fa-trophy::before { content: "\2605"; }
+    .fa-arrow-right::before,
+    .fa-arrow-right-long::before { content: "\2192"; }
+    .fa-id-card::before { content: "\25A4"; }
+    .fa-discord::before { content: "\25C9"; }
+    .fa-instagram::before { content: "\25CE"; }
+    .fa-graduation-cap::before { content: "\25B2"; }
+    .fa-message::before { content: "\25C6"; }
+    .fa-circle::before { content: "\2022"; }
     
     .btn-join {
         background: var(--green);
@@ -349,52 +380,42 @@
     }
 
     .committee-photo--ywen {
-        background-image: url('assets/oh-yi-wen.webp');
         background-position: 15% 41%;
     }
 
     .committee-photo--dylan {
-        background-image: url('assets/dylan-lim.webp');
         background-position: 83% 41%;
     }
 
     .committee-photo--numa {
-        background-image: url('assets/numa-fecher.webp');
         background-position: 15% 41%;
     }
 
     .committee-photo--dua {
-        background-image: url('assets/dua-eltaie.webp');
         background-position: 83% 41%;
     }
 
     .committee-photo--nana {
-        background-image: url('assets/nana-yaw-asare-frimpong.webp');
         background-position: 15% 41%;
     }
 
     .committee-photo--khoo {
-        background-image: url('assets/khoo-ning-en.webp');
         background-position: 83% 41%;
     }
 
     .committee-photo--renato {
-        background-image: url('assets/renato-barra.webp');
         background-position: 15% 41%;
     }
 
     .committee-photo--yashas {
-        background-image: url('assets/yashas-paluri.webp');
         background-position: 83% 41%;
     }
 
     .committee-photo--liew {
-        background-image: url('assets/liew-hui-ling.webp');
         background-position: 15% 41%;
     }
 
     .committee-photo--finian {
-        background-image: url('assets/finian-eagling.webp');
         background-position: 83% 41%;
     }
 
@@ -449,6 +470,16 @@
         outline: 2px solid var(--green);
         outline-offset: 0.35rem;
     }
+
+    #competition,
+    #committee,
+    footer {
+        content-visibility: auto;
+    }
+
+    #competition { contain-intrinsic-size: auto 680px; }
+    #committee { contain-intrinsic-size: auto 390px; }
+    footer { contain-intrinsic-size: auto 310px; }
 
     /* UniBots gets the page's restrained warm accent. */
     .unibots-highlight {
@@ -1023,7 +1054,7 @@
             </div>
 
             <div class="about-media media-frame aspect-video bg-[#08141A] rounded border border-[#1B3442] flex items-center justify-center overflow-hidden">
-                <img id="about-image" src="assets/unibots-action.jpg" alt="RoboSoc members testing a robot together at UniBots" class="w-full h-full object-cover">
+                <img id="about-image" src="assets/unibots-action-640.webp" srcset="assets/unibots-action-640.webp 640w, assets/unibots-action-1200.webp 1200w" sizes="(min-width: 1024px) 560px, calc(100vw - 4rem)" width="1200" height="800" fetchpriority="high" decoding="async" alt="RoboSoc members testing a robot together at UniBots" class="w-full h-full object-cover">
             </div>
         </section>
         
@@ -1071,10 +1102,10 @@
             </div>
             <div class="competition-gallery" aria-label="RoboSoc workshop and UniBots robot">
                 <div class="competition-gallery__workshop media-frame bg-[#08141A] rounded border border-[#1B3442] overflow-hidden">
-                    <img id="competition-image" src="assets/workshop-event.jpg" alt="RoboSoc workshop with students learning robotics together">
+                    <img id="competition-image" src="assets/workshop-event-640.webp" srcset="assets/workshop-event-640.webp 640w, assets/workshop-event-1200.webp 1200w" sizes="(min-width: 1024px) 360px, calc(100vw - 4rem)" width="1200" height="675" loading="lazy" decoding="async" alt="RoboSoc workshop with students learning robotics together">
                 </div>
                 <div class="competition-gallery__robot media-frame bg-[#08141A] rounded border border-[#1B3442] overflow-hidden">
-                    <img src="assets/unibots-robot.png" alt="A student-built UniBots robot on the competition arena">
+                    <img src="assets/unibots-robot-480.webp" width="480" height="640" loading="lazy" decoding="async" alt="A student-built UniBots robot on the competition arena">
                 </div>
             </div>
         </div>
@@ -1094,61 +1125,61 @@
         
         <div id="committee-rail" class="committee-rail" tabindex="0" role="region" aria-label="Committee members. Scroll horizontally to see more.">
             <div class="committee-member">
-                <div class="committee-photo committee-photo--ywen mb-4" role="img" aria-label="Oh Yi Wen, RoboSoc Co-Founder and President"></div>
+                <div class="committee-photo committee-photo--ywen mb-4" data-photo="assets/oh-yi-wen.webp" role="img" aria-label="Oh Yi Wen, RoboSoc Co-Founder and President"></div>
                 <div class="terminal-text font-bold mb-1">Oh Yi Wen</div>
                 <div class="text-sm text-[#7FA3B0]">Co-Founder &amp; President</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 2 Electrical &amp; Electronic Engineering</div>
             </div>
             <div class="committee-member">
-                <div class="committee-photo committee-photo--dylan mb-4" role="img" aria-label="Dylan Lim, RoboSoc Co-Founder and Vice President"></div>
+                <div class="committee-photo committee-photo--dylan mb-4" data-photo="assets/dylan-lim.webp" role="img" aria-label="Dylan Lim, RoboSoc Co-Founder and Vice President"></div>
                 <div class="terminal-text font-bold mb-1">Dylan Lim</div>
                 <div class="text-sm text-[#7FA3B0]">Co-Founder &amp; Vice President</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
             </div>
             <div class="committee-member">
-                <div class="committee-photo committee-photo--numa mb-4" role="img" aria-label="Numa Fecher, RoboSoc General Secretary"></div>
+                <div class="committee-photo committee-photo--numa mb-4" data-photo="assets/numa-fecher.webp" role="img" aria-label="Numa Fecher, RoboSoc General Secretary"></div>
                 <div class="terminal-text font-bold mb-1">Numa Fecher</div>
                 <div class="text-sm text-[#7FA3B0]">General Secretary</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
             </div>
             <div class="committee-member">
-                <div class="committee-photo committee-photo--dua mb-4" role="img" aria-label="Dua Eltaie, RoboSoc Treasurer"></div>
+                <div class="committee-photo committee-photo--dua mb-4" data-photo="assets/dua-eltaie.webp" role="img" aria-label="Dua Eltaie, RoboSoc Treasurer"></div>
                 <div class="terminal-text font-bold mb-1">Dua Eltaie</div>
                 <div class="text-sm text-[#7FA3B0]">Treasurer</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 4 Economics</div>
             </div>
             <div class="committee-member">
-                <div class="committee-photo committee-photo--nana mb-4" role="img" aria-label="Nana Yaw Asare Frimpong, RoboSoc Technical Officer"></div>
+                <div class="committee-photo committee-photo--nana mb-4" data-photo="assets/nana-yaw-asare-frimpong.webp" role="img" aria-label="Nana Yaw Asare Frimpong, RoboSoc Technical Officer"></div>
                 <div class="terminal-text font-bold mb-1">Nana Yaw Asare Frimpong</div>
                 <div class="text-sm text-[#7FA3B0]">Technical Officer</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 3 Electrical &amp; Electronic Engineering</div>
             </div>
             <div class="committee-member">
-                <div class="committee-photo committee-photo--khoo mb-4" role="img" aria-label="Khoo Ning En, RoboSoc Technical Officer"></div>
+                <div class="committee-photo committee-photo--khoo mb-4" data-photo="assets/khoo-ning-en.webp" role="img" aria-label="Khoo Ning En, RoboSoc Technical Officer"></div>
                 <div class="terminal-text font-bold mb-1">Khoo Ning En</div>
                 <div class="text-sm text-[#7FA3B0]">Technical Officer</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 2 Electrical &amp; Electronic Engineering</div>
             </div>
             <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
-                <div class="committee-photo committee-photo--renato mb-4" role="img" aria-label="Renato Ignacio Barra Faúndez, RoboSoc Technical Officer"></div>
+                <div class="committee-photo committee-photo--renato mb-4" data-photo="assets/renato-barra.webp" role="img" aria-label="Renato Ignacio Barra Faúndez, RoboSoc Technical Officer"></div>
                 <div class="terminal-text font-bold mb-1">Renato Ignacio Barra Faúndez</div>
                 <div class="text-sm text-[#7FA3B0]">Technical Officer</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 1 Civil Engineering</div>
             </div>
             <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
-                <div class="committee-photo committee-photo--yashas mb-4" role="img" aria-label="Yashas Paluri, RoboSoc Marketing Officer"></div>
+                <div class="committee-photo committee-photo--yashas mb-4" data-photo="assets/yashas-paluri.webp" role="img" aria-label="Yashas Paluri, RoboSoc Marketing Officer"></div>
                 <div class="terminal-text font-bold mb-1">Yashas Paluri</div>
                 <div class="text-sm text-[#7FA3B0]">Marketing Officer</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
             </div>
             <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
-                <div class="committee-photo committee-photo--liew mb-4" role="img" aria-label="Liew Hui Ling, RoboSoc Marketing Officer"></div>
+                <div class="committee-photo committee-photo--liew mb-4" data-photo="assets/liew-hui-ling.webp" role="img" aria-label="Liew Hui Ling, RoboSoc Marketing Officer"></div>
                 <div class="terminal-text font-bold mb-1">Liew Hui Ling</div>
                 <div class="text-sm text-[#7FA3B0]">Marketing Officer</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 2 Electrical &amp; Electronic Engineering</div>
             </div>
             <div class="p-5 border border-[#1B3442] rounded bg-[#08141A]">
-                <div class="committee-photo committee-photo--finian mb-4" role="img" aria-label="Finian Eagling, RoboSoc Wellbeing Officer"></div>
+                <div class="committee-photo committee-photo--finian mb-4" data-photo="assets/finian-eagling.webp" role="img" aria-label="Finian Eagling, RoboSoc Wellbeing Officer"></div>
                 <div class="terminal-text font-bold mb-1">Finian Eagling</div>
                 <div class="text-sm text-[#7FA3B0]">Wellbeing Officer</div>
                 <div class="text-xs text-[#5A7A86] mt-2">Year 1 Computer Science</div>
@@ -1238,6 +1269,27 @@
             }
         });
     });
+</script>
+<script>
+    // Load committee portraits only when the rail approaches the viewport.
+    const loadCommitteePhoto = (photo) => {
+        photo.style.backgroundImage = `url("${photo.dataset.photo}")`;
+        photo.removeAttribute('data-photo');
+    };
+
+    if ('IntersectionObserver' in window) {
+        const committeeObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                loadCommitteePhoto(entry.target);
+                observer.unobserve(entry.target);
+            });
+        }, { rootMargin: '180px 240px' });
+        window.observeCommitteePhotos = (photos) => photos.forEach((photo) => committeeObserver.observe(photo));
+    } else {
+        window.observeCommitteePhotos = (photos) => photos.forEach(loadCommitteePhoto);
+    }
+    window.observeCommitteePhotos(document.querySelectorAll('.committee-photo[data-photo]'));
 </script>
 <script src="scripts/content.js" defer></script>
 <script src="scripts/events.js" defer></script>

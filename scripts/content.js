@@ -120,7 +120,7 @@
       photo.className = "committee-photo mb-4";
       photo.setAttribute("role", "img");
       photo.setAttribute("aria-label", `${member.name}, RoboSoc ${member.role}`);
-      photo.style.backgroundImage = `url("${member.image}")`;
+      photo.dataset.photo = member.image;
       photo.style.backgroundSize = `${Number(member.imageScale || 1) * 100}% auto`;
       photo.style.backgroundPosition = member.imagePosition || "50% 50%";
 
@@ -133,6 +133,9 @@
       card.append(photo, name, role);
       rail.append(card);
     });
+    if (typeof window.observeCommitteePhotos === "function") {
+      window.observeCommitteePhotos(rail.querySelectorAll(".committee-photo[data-photo]"));
+    }
   }
 
   function renderFooter(footer) {
@@ -217,11 +220,11 @@
   }
 
   Promise.all([
-    fetch(SITE_URL, { cache: "no-store" }).then((response) => {
+    fetch(SITE_URL).then((response) => {
       if (!response.ok) throw new Error(`Site content request failed: ${response.status}`);
       return response.json();
     }),
-    fetch(COMMITTEE_URL, { cache: "no-store" }).then((response) => {
+    fetch(COMMITTEE_URL).then((response) => {
       if (!response.ok) throw new Error(`Committee request failed: ${response.status}`);
       return response.json();
     })
