@@ -70,6 +70,9 @@
             image.alt = `${event.title} event`;
             image.loading = 'lazy';
             image.decoding = 'async';
+            if (typeof event.imagePosition === 'string' && /^\d{1,3}% \d{1,3}%$/.test(event.imagePosition)) {
+                image.style.objectPosition = event.imagePosition;
+            }
             card.appendChild(image);
         }
 

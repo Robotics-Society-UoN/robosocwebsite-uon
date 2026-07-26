@@ -69,6 +69,10 @@
             { "type": "null" }
           ]
         },
+        "imagePosition": {
+          "type": "string",
+          "pattern": "^[0-9]{1,3}% [0-9]{1,3}%$"
+        },
         "featured": { "type": "boolean" },
         "published": { "type": "boolean" },
         "tags": {

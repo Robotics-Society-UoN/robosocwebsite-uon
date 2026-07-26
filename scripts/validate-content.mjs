@@ -9,6 +9,7 @@ const required = (value, label) => {
 };
 const assetPattern = /^assets\/[A-Za-z0-9][A-Za-z0-9._/-]*$/;
 const idPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const imagePositionPattern = /^\d{1,3}% \d{1,3}%$/;
 
 async function readJson(relativePath) {
   try {
@@ -74,12 +75,14 @@ if (site) {
   }
   await checkAsset(site.about?.image, "site.about.image");
   required(site.about?.imageAlt, "site.about.imageAlt");
+  if (!imagePositionPattern.test(site.about?.imagePosition || "")) errors.push('site.about.imagePosition must look like "50% 50%".');
   required(site.calendar?.heading, "site.calendar.heading");
 
   required(site.competition?.heading, "site.competition.heading");
   required(site.competition?.body, "site.competition.body");
   await checkAsset(site.competition?.image, "site.competition.image");
   required(site.competition?.imageAlt, "site.competition.imageAlt");
+  if (!imagePositionPattern.test(site.competition?.imagePosition || "")) errors.push('site.competition.imagePosition must look like "50% 50%".');
   if (checkList(site.competition?.points, "site.competition.points")) {
     site.competition.points.forEach((item, index) => {
       required(item?.label, `site.competition.points[${index}].label`);

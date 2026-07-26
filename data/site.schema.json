@@ -18,15 +18,30 @@
     },
     "navigation": { "type": "object" },
     "links": { "type": "object" },
-    "about": { "type": "object" },
+    "about": {
+      "type": "object",
+      "properties": {
+        "image": { "$ref": "#/$defs/asset" },
+        "imageAlt": { "$ref": "#/$defs/text" },
+        "imagePosition": { "$ref": "#/$defs/imagePosition" }
+      }
+    },
     "calendar": { "type": "object" },
-    "competition": { "type": "object" },
+    "competition": {
+      "type": "object",
+      "properties": {
+        "image": { "$ref": "#/$defs/asset" },
+        "imageAlt": { "$ref": "#/$defs/text" },
+        "imagePosition": { "$ref": "#/$defs/imagePosition" }
+      }
+    },
     "committee": { "type": "object" },
     "footer": { "type": "object" }
   },
   "$defs": {
     "text": { "type": "string", "minLength": 1 },
     "asset": { "type": "string", "pattern": "^assets/" },
+    "imagePosition": { "type": "string", "pattern": "^[0-9]{1,3}% [0-9]{1,3}%$" },
     "titleDescription": {
       "type": "object",
       "required": ["title", "description"],
