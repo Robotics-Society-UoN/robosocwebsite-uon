@@ -30,7 +30,8 @@
       "EXPLORE: Hands-on projects",
       "BELONG: Any course, any level"
     ],
-    "image": "assets/unibots-action.jpg",
+    "image": "assets/unibots-action-640.webp",
+    "imagePosition": "50% 50%",
     "imageAlt": "RoboSoc members testing a robot together at UniBots"
   },
   "calendar": {
@@ -53,7 +54,8 @@
         "text": "Mentors and regular build sessions."
       }
     ],
-    "image": "assets/workshop-event.jpg",
+    "image": "assets/workshop-event-640.webp",
+    "imagePosition": "50% 50%",
     "imageAlt": "RoboSoc workshop with students learning robotics together"
   },
   "committee": {

@@ -8,7 +8,7 @@ const requiredFields = [
   "timeLabel", "location", "registrationUrl", "ctaLabel", "image",
   "featured", "published", "tags"
 ];
-const allowedFields = new Set(requiredFields);
+const allowedFields = new Set([...requiredFields, "imagePosition"]);
 const errors = [];
 
 if (document.version !== 1) errors.push("version must be 1");
@@ -80,6 +80,9 @@ for (const [index, event] of (document.events || []).entries()) {
         errors.push(`${label}.image points to a file that does not exist: ${event.image}`);
       }
     }
+  }
+  if (event.imagePosition !== undefined && (typeof event.imagePosition !== "string" || !/^\d{1,3}% \d{1,3}%$/.test(event.imagePosition))) {
+    errors.push(`${label}.imagePosition must look like "50% 50%" when provided`);
   }
   if (!Array.isArray(event.tags) || event.tags.some(tag => typeof tag !== "string" || !tag.trim())) {
     errors.push(`${label}.tags must be a list of non-empty text labels`);

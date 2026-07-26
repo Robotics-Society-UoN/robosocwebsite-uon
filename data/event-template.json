@@ -10,6 +10,7 @@
   "registrationUrl": null,
   "ctaLabel": null,
   "image": null,
+  "imagePosition": "50% 50%",
   "featured": false,
   "published": false,
   "tags": [

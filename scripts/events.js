@@ -69,6 +69,10 @@
             image.src = imagePath;
             image.alt = `${event.title} event`;
             image.loading = 'lazy';
+            image.decoding = 'async';
+            if (typeof event.imagePosition === 'string' && /^\d{1,3}% \d{1,3}%$/.test(event.imagePosition)) {
+                image.style.objectPosition = event.imagePosition;
+            }
             card.appendChild(image);
         }
 
@@ -99,7 +103,7 @@
         return card;
     }
 
-    fetch('data/events.json', { cache: 'no-store' })
+    fetch('data/events.json')
         .then(response => {
             if (!response.ok) throw new Error(`Events request returned ${response.status}`);
             return response.json();

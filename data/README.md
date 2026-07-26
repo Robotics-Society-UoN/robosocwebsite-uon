@@ -45,6 +45,8 @@ Event fields include the public title and summary, start/end dates, display labe
 - Use short filenames without spaces, such as `assets/unibots-2026.jpg`.
 - Enter the exact path in the JSON file, including the file extension.
 - Add useful `imageAlt` text in `site.json` so screen-reader users know what the image shows.
+- Use `imagePosition` such as `"50% 50%"` to control the crop without changing the layout. The first percentage moves the image horizontally and the second vertically.
+- About and Competition images automatically drop the old responsive source set when you change their JSON path, so a replacement image cannot be masked by the previous one.
 
 ## Safety checks
 

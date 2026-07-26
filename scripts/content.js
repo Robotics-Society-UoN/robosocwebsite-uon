@@ -25,7 +25,30 @@
 
   function setText(id, value) {
     const element = byId(id);
-    if (element && typeof value === "string") element.textContent = value;
+    if (element && typeof value === "string" && element.textContent !== value) {
+      element.textContent = value;
+    }
+  }
+
+  function setEditableImage(image, source, alt, position) {
+    const src = safeAsset(source);
+    if (!image || !src) return;
+
+    /*
+     * The fallback HTML includes optimized srcsets for the current images.
+     * Drop that old srcset when JSON points at a replacement image.
+     */
+    if (image.getAttribute("src") !== src) {
+      image.removeAttribute("srcset");
+      image.removeAttribute("sizes");
+      image.src = src;
+    }
+    if (typeof alt === "string" && alt.trim()) image.alt = alt;
+    if (typeof position === "string" && /^\d{1,3}% \d{1,3}%$/.test(position)) {
+      image.style.objectPosition = position;
+    } else {
+      image.style.removeProperty("object-position");
+    }
   }
 
   function appendHighlightedText(element, value) {
@@ -55,12 +78,16 @@
     setText("about-heading", about.heading);
     const copy = byId("about-copy");
     if (copy && Array.isArray(about.paragraphs)) {
-      copy.replaceChildren();
-      about.paragraphs.forEach((paragraph) => {
-        const item = document.createElement("p");
-        appendHighlightedText(item, paragraph);
-        copy.append(item);
-      });
+      const plainParagraphs = about.paragraphs.map((paragraph) => String(paragraph).replace(/\[\[|\]\]/g, ""));
+      const existingParagraphs = Array.from(copy.children, (item) => item.textContent || "");
+      if (plainParagraphs.join("\n") !== existingParagraphs.join("\n")) {
+        copy.replaceChildren();
+        about.paragraphs.forEach((paragraph) => {
+          const item = document.createElement("p");
+          appendHighlightedText(item, paragraph);
+          copy.append(item);
+        });
+      }
     }
 
     const bullets = byId("about-bullets");
@@ -79,10 +106,7 @@
       });
     }
 
-    const image = byId("about-image");
-    const src = safeAsset(about.image);
-    if (image && src) image.src = src;
-    if (image && typeof about.imageAlt === "string") image.alt = about.imageAlt;
+    setEditableImage(byId("about-image"), about.image, about.imageAlt, about.imagePosition);
   }
 
   function renderCompetition(competition) {
@@ -100,10 +124,12 @@
         points.append(row);
       });
     }
-    const image = byId("competition-image");
-    const src = safeAsset(competition.image);
-    if (image && src) image.src = src;
-    if (image && typeof competition.imageAlt === "string") image.alt = competition.imageAlt;
+    setEditableImage(
+      byId("competition-image"),
+      competition.image,
+      competition.imageAlt,
+      competition.imagePosition
+    );
   }
 
   function renderCommittee(data) {
@@ -120,7 +146,7 @@
       photo.className = "committee-photo mb-4";
       photo.setAttribute("role", "img");
       photo.setAttribute("aria-label", `${member.name}, RoboSoc ${member.role}`);
-      photo.style.backgroundImage = `url("${member.image}")`;
+      photo.dataset.photo = member.image;
       photo.style.backgroundSize = `${Number(member.imageScale || 1) * 100}% auto`;
       photo.style.backgroundPosition = member.imagePosition || "50% 50%";
 
@@ -133,6 +159,9 @@
       card.append(photo, name, role);
       rail.append(card);
     });
+    if (typeof window.observeCommitteePhotos === "function") {
+      window.observeCommitteePhotos(rail.querySelectorAll(".committee-photo[data-photo]"));
+    }
   }
 
   function renderFooter(footer) {
@@ -217,11 +246,11 @@
   }
 
   Promise.all([
-    fetch(SITE_URL, { cache: "no-store" }).then((response) => {
+    fetch(SITE_URL).then((response) => {
       if (!response.ok) throw new Error(`Site content request failed: ${response.status}`);
       return response.json();
     }),
-    fetch(COMMITTEE_URL, { cache: "no-store" }).then((response) => {
+    fetch(COMMITTEE_URL).then((response) => {
       if (!response.ok) throw new Error(`Committee request failed: ${response.status}`);
       return response.json();
     })

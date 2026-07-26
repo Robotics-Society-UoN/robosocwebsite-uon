@@ -10,9 +10,9 @@ You do not need a database, Supabase or an admin dashboard. Repository collabora
 - [Edit committee members](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/committee.json)
 - [Edit events](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/events.json)
 
-Commit the edit to `main`. GitHub Pages will publish it automatically if Pages is configured for this repository. Only the owner and invited collaborators with write access can commit.
+Commit the edit to `main`. The connected `uonrobosoc` Vercel project publishes the production site from the repository. Only the owner and invited collaborators with write access can commit.
 
-For image changes, upload the image into [`assets/`](./assets), then enter its path such as `assets/new-member.jpg` in the relevant JSON file.
+For image changes, upload an optimized WebP image into [`assets/`](./assets), then enter its path such as `assets/new-member.webp` in the relevant JSON file. Use `imagePosition` to adjust its crop without changing any card or section dimensions.
 
 See the complete [content editing guide](./data/README.md) before making the first update.
 
