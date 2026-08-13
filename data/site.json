@@ -10,25 +10,22 @@
     "logoAlt": "UoN Robotics Society logo"
   },
   "navigation": {
-    "calendar": "Calendar",
     "unibots": "UniBots",
-    "committee": "Committee",
-    "contact": "Contact",
     "join": "JOIN US!"
   },
   "links": {
     "membership": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership",
-    "discord": "https://discord.gg/psgGx7FQn"
+    "discord": "https://discord.gg/pT8Kv5G4Uf"
   },
   "about": {
     "heading": "Who are we?",
     "paragraphs": [
-      "[[RoboSoc]] brings curious students together to turn ideas into working robots. Meet builders, find a team and learn at your own pace."
+      "[[RoboSoc]] runs weekly hands-on workshops that teach you how to build a robot. Every month will cover a different aspect of the process so that by the end of the year you’ll have built a fully functioning robot."
     ],
     "bullets": [
-      "MEET: Weekly build nights",
-      "EXPLORE: Hands-on projects",
-      "BELONG: Any course, any level"
+      "WORKSHOPS: Weekly hands-on workshops ",
+      "SOCIAL: Monthly socials ",
+      "OPEN TO ALL: Any course, any level"
     ],
     "image": "assets/unibots-action-640.webp",
     "imagePosition": "50% 50%",
@@ -39,11 +36,11 @@
   },
   "competition": {
     "heading": "Build. Learn. Compete.",
-    "body": "Everything needed to compete is included: guided teaching, tools, parts and a team. No application or prior experience required.",
+    "body": "Join a team to compete in the UniBots competition. No experience is needed since all our workshops will prepare you and your team to compete by the end of the year.",
     "points": [
       {
         "label": "SKILLS_TAUGHT",
-        "text": "Arduino, CAD, coding, electronics and machining."
+        "text": "Arduino, CAD, coding, electronics and mechanical engineering."
       },
       {
         "label": "KIT_INCLUDED",
@@ -51,7 +48,7 @@
       },
       {
         "label": "TEAM_SUPPORT",
-        "text": "Mentors and regular build sessions."
+        "text": "Weekly workshops, year-long curriculum, lively community."
       }
     ],
     "image": "assets/workshop-event-640.webp",
@@ -79,7 +76,7 @@
       {
         "icon": "fa-brands fa-discord",
         "label": "Discord Server",
-        "url": "https://discord.gg/psgGx7FQn"
+        "url": "https://discord.gg/pT8Kv5G4Uf"
       },
       {
         "icon": "fa-brands fa-instagram",
@@ -92,22 +89,8 @@
         "url": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership"
       }
     ],
-    "exploreTitle": "EXPLORE",
-    "explore": [
-      {
-        "label": "About RoboSoc",
-        "url": "#main"
-      },
-      {
-        "label": "UniBots Competition",
-        "url": "#competition"
-      },
-      {
-        "label": "Meet the Committee",
-        "url": "#committee"
-      }
-    ],
-    "copyright": "© 2026 ROBO>SOC • University Robotics Society",
-    "tagline": "Built for students. Open to everyone."
+   
+    "copyright": "© 2026 ROBO>SOC • UoN Robotics Society",
+    "tagline": "Built for students."
   }
 }
