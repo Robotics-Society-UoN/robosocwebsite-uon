@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Join University of Nottingham RoboSoc's UniBots team and follow the latest published competition dates.">
+  <title>UniBots | UoN Robotics Society</title>
+  <link rel="icon" href="assets/robosoc-logo-transparent.png" type="image/png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #10171f;
+      --surface: #19242e;
+      --surface-2: #141d26;
+      --border: rgba(255, 255, 255, .085);
+      --text: #f3f6f8;
+      --dim: #b8c3cc;
+      --muted: #7d8b96;
+      --cyan: #2ab7f6;
+      --cyan-soft: rgba(42, 183, 246, .12);
+      --action: #159edc;
+      --action-hover: #0c83bb;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .34);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.12; text-wrap: balance; }
+    h1 { margin-bottom: .75rem; font-size: clamp(2.25rem, 4.5vw, 3.5rem); letter-spacing: -.06em; }
+    h2 { margin-bottom: .65rem; font-size: clamp(1.45rem, 3vw, 2rem); letter-spacing: -.035em; }
+    h3 { margin-bottom: .45rem; font-size: 1.08rem; }
+
+    .shell { width: min(75rem, calc(100% - 2rem)); margin-inline: auto; }
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid var(--border);
+      background: rgba(16, 23, 31, .94);
+      backdrop-filter: blur(18px);
+    }
+    .nav {
+      min-height: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 900;
+    }
+    .brand img { width: 6rem; height: 3.6rem; object-fit: cover; transform: scale(1.75); }
+    .nav-actions, .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; }
+
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      padding: .72rem 1rem;
+      border: 1px solid var(--cyan);
+      border-radius: .7rem;
+      background: transparent;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 900;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--cyan-soft); }
+    .button--primary { background: var(--action); color: #fff; }
+    .button--primary:hover { background: var(--action-hover); }
+    .button--muted {
+      cursor: default;
+      border-color: var(--border);
+      color: var(--muted);
+      background: rgba(255, 255, 255, .02);
+    }
+
+    main { padding: 2rem 0 3rem; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(28rem, 1.1fr);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: var(--surface);
+    }
+    .hero-copy { align-self: center; max-width: 54rem; padding: clamp(1.5rem, 4vw, 2.5rem); }
+    .eyebrow {
+      margin-bottom: .8rem;
+      color: var(--cyan);
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .lead { max-width: 48rem; color: var(--dim); font-size: 1rem; }
+
+    .section { margin-top: 2.25rem; }
+    .section-heading { max-width: 50rem; margin-bottom: 1.4rem; }
+    .section-heading p { color: var(--dim); }
+    .notice {
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(42, 183, 246, .35);
+      border-radius: .85rem;
+      background: rgba(42, 183, 246, .055);
+      color: var(--dim);
+    }
+
+    .date-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: 1rem; }
+    .date-card {
+      position: relative;
+      padding: 1rem 1.1rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: var(--surface-2);
+    }
+    .date-card time { display: block; margin-bottom: .4rem; color: var(--cyan); font-size: 1rem; font-weight: 900; }
+    .date-card p { color: var(--dim); font-size: .86rem; }
+    .tag {
+      display: inline-flex;
+      padding: .25rem .5rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: .66rem;
+      font-weight: 900;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .panel {
+      padding: clamp(1.35rem, 3vw, 2rem);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      background: var(--surface);
+    }
+    .panel p, .panel li { color: var(--dim); }
+    .panel ul { margin: 1rem 0 1.35rem; padding-left: 1.15rem; }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: 18rem;
+      gap: .75rem;
+    }
+    .gallery figure { position: relative; margin: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 1rem; background: var(--surface); }
+    .gallery img { width: 100%; height: 100%; object-fit: cover; }
+    .gallery figure:nth-child(2) img { object-position: center 45%; }
+    .hero-gallery {
+      align-self: stretch;
+      padding: .75rem;
+      border-left: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    footer { padding: 2rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .78rem; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .date-grid { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 17rem; }
+      .hero-gallery { border-top: 1px solid var(--border); border-left: 0; }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 1rem, 75rem); }
+      .brand span { display: none; }
+      .brand img { width: 5rem; }
+      .nav-actions .button:first-child { display: none; }
+      main { padding-top: .5rem; }
+      .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 13rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="UniBots navigation">
+      <a class="brand" href="index.html">
+        <img src="assets/robosoc-logo-transparent.png" alt="UoN Robotics Society logo">
+        <span>UoN Robotics Society</span>
+      </a>
+      <div class="nav-actions">
+        <a class="button" href="index.html">Back to RoboSoc</a>
+        <a class="button button--primary" href="https://unibots.uk/" target="_blank" rel="noopener">Visit unibots.uk <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>UniBots</h1>
+        <p class="lead">RoboSoc competes in UniBots, a UK competition where students design and build autonomous robots. The Nottingham team is open to all students, and no previous experience is required.</p>
+        <div class="hero-actions">
+          <a class="button button--primary" href="https://unibots.uk/" target="_blank" rel="noopener">Visit unibots.uk <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="gallery hero-gallery" aria-label="RoboSoc UniBots robot">
+        <figure>
+          <img src="assets/unibots-robot-front.png" width="1200" height="1600" alt="Front view of RoboSoc's UniBots robot">
+        </figure>
+        <figure>
+          <img src="assets/unibots-robot-rear.png" width="1200" height="1600" alt="Rear view of RoboSoc's UniBots robot showing its electronics and wiring">
+        </figure>
+      </div>
+    </section>
+
+    <section id="dates" class="section">
+      <div class="section-heading">
+        <h2>Key dates</h2>
+        <p>The latest dates published for the 2026 season:</p>
+      </div>
+      <div class="notice">The 2026–27 dates have not been published yet.</div>
+      <div class="date-grid">
+        <article class="date-card">
+          <time datetime="2026-02-28">28 February 2026</time>
+          <h3>Edinburgh</h3>
+        </article>
+        <article class="date-card">
+          <time datetime="2026-03-21">21 March 2026</time>
+          <h3>Cambridge</h3>
+        </article>
+        <article class="date-card">
+          <time datetime="2026-06-27">27–28 June 2026</time>
+          <h3>London</h3>
+        </article>
+      </div>
+    </section>
+
+    <section id="join" class="section">
+      <div class="section-heading">
+        <h2>Joining the team</h2>
+      </div>
+      <div class="info-grid">
+        <article class="panel">
+          <h3>Freshers’ competition talk</h3>
+          <p>Details will be added here when they are finalised.</p>
+        </article>
+        <article class="panel">
+          <h3>Sign-up form</h3>
+          <p>The RoboSoc team sign-up link will be added here when it is ready.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">&copy; 2026 ROBO&gt;SOC &bull; UoN Robotics Society</div>
+  </footer>
+</body>
+</html>

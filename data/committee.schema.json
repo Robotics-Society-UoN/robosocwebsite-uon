@@ -12,12 +12,11 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "name", "role", "course", "image", "imageScale", "imagePosition", "published"],
+        "required": ["id", "name", "role", "image", "imageScale", "imagePosition", "published"],
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
           "name": { "type": "string", "minLength": 1 },
           "role": { "type": "string", "minLength": 1 },
-          "course": { "type": "string", "minLength": 1 },
           "image": { "type": "string", "pattern": "^assets/" },
           "imageScale": { "type": "number", "minimum": 1, "maximum": 5 },
           "imagePosition": { "type": "string", "pattern": "^[0-9]{1,3}% [0-9]{1,3}%$" },

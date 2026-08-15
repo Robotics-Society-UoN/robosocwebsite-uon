@@ -6,11 +6,14 @@
     "description": "University of Nottingham Robotics Society: workshops, robotics projects and the UniBots competition, open to every student."
   },
   "brand": {
-    "logo": "assets/robosoc-logo.jpg",
+    "logo": "assets/robosoc-logo-transparent.png",
     "logoAlt": "UoN Robotics Society logo"
   },
   "navigation": {
+    "calendar": "Calendar",
     "unibots": "UniBots",
+    "committee": "Committee",
+    "contact": "Contact",
     "join": "JOIN US!"
   },
   "links": {

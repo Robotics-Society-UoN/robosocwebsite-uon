@@ -91,10 +91,8 @@ if (site) {
   }
 
   required(site.committee?.heading, "site.committee.heading");
-  required(site.committee?.scrollHint, "site.committee.scrollHint");
-
   const footer = site.footer || {};
-  for (const key of ["contactTitle", "linksTitle", "exploreTitle", "copyright", "tagline"]) {
+  for (const key of ["contactTitle", "copyright"]) {
     required(footer[key], `site.footer.${key}`);
   }
   if (checkList(footer.contact, "site.footer.contact")) {
@@ -110,7 +108,7 @@ if (site) {
       checkUrl(item?.url, `site.footer.links[${index}].url`);
     });
   }
-  if (checkList(footer.explore, "site.footer.explore")) {
+  if (Array.isArray(footer.explore)) {
     footer.explore.forEach((item, index) => {
       required(item?.label, `site.footer.explore[${index}].label`);
       checkUrl(item?.url, `site.footer.explore[${index}].url`, true);
@@ -129,7 +127,6 @@ if (committee) {
       ids.add(member.id);
       required(member.name, `${label}.name`);
       required(member.role, `${label}.role`);
-      required(member.course, `${label}.course`);
       await checkAsset(member.image, `${label}.image`);
       if (typeof member.imageScale !== "number" || member.imageScale < 1 || member.imageScale > 5) errors.push(`${label}.imageScale must be a number from 1 to 5.`);
       if (typeof member.imagePosition !== "string" || !/^\d{1,3}% \d{1,3}%$/.test(member.imagePosition)) errors.push(`${label}.imagePosition must look like "50% 50%".`);

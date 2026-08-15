@@ -24,7 +24,7 @@ Use `[[double brackets]]` inside an About paragraph to apply the existing cyan h
 1. Upload the new portrait into the repository's [`assets/`](../assets) folder.
 2. Open [`committee.json`](https://github.com/Robotics-Society-UoN/robosocwebsite-uon/edit/main/data/committee.json).
 3. Copy the object in [`committee-template.json`](./committee-template.json) into the `members` list.
-4. Change the `id`, `name`, `role`, `course` and `image` values.
+4. Change the `id`, `name`, `role` and `image` values.
 5. Set `published` to `true` and commit.
 
 For a normal standalone portrait, keep `imageScale` at `1` and `imagePosition` at `50% 50%`. Increase `imageScale` to zoom in; change the two percentages to move the crop horizontally and vertically. Set `published` to `false` to hide someone without deleting their details.

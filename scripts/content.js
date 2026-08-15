@@ -141,6 +141,7 @@
     members.forEach((member) => {
       const card = document.createElement("div");
       card.className = "committee-member";
+      card.setAttribute("role", "listitem");
 
       const photo = document.createElement("div");
       photo.className = "committee-photo mb-4";
