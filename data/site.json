@@ -27,7 +27,7 @@
     ],
     "bullets": [
       "WORKSHOPS: Weekly hands-on workshops ",
-      "SOCIAL: Monthly socials ",
+      "SOCIALS: Monthly socials ",
       "OPEN TO ALL: Any course, any level"
     ],
     "image": "assets/unibots-action-640.webp",
@@ -93,7 +93,6 @@
       }
     ],
    
-    "copyright": "© 2026 ROBO>SOC • UoN Robotics Society",
-    "tagline": "Built for students."
+    "copyright": "© 2026 ROBO>SOC • UoN Robotics Society"
   }
 }
