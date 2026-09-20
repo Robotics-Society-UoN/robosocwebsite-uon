@@ -113,7 +113,8 @@
                 .filter(isRenderableEvent)
                 .sort((a, b) => {
                     if (a.featured !== b.featured) return a.featured ? -1 : 1;
-                    if (!a.startDate && !b.startDate) return a.title.localeCompare(b.title);
+                    // Preserve editorial order when the supplied dates have no confirmed year.
+                    if (!a.startDate && !b.startDate) return 0;
                     if (!a.startDate) return 1;
                     if (!b.startDate) return -1;
                     return Date.parse(a.startDate) - Date.parse(b.startDate);

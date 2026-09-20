@@ -2,13 +2,86 @@
   "$schema": "./committee.schema.json",
   "version": 1,
   "members": [
-    { "id": "yashas-paluri", "name": "Yashas Paluri", "role": "President", "image": "assets/yashas-paluri-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true },
-    { "id": "numa-fecher", "name": "Numa Fecher", "role": "General Secretary", "image": "assets/numa-fecher-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true },
-    { "id": "eaint-swe", "name": "Eaint Swe (Freya)", "role": "Treasurer", "image": "assets/eaint-swe-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true },
-    { "id": "iman-ibrahim", "name": "Iman Ibrahim", "role": "Technical Officer", "image": "assets/iman-ibrahim-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true },
-    { "id": "ayush-gupta", "name": "Ayush Gupta", "role": "Technical Officer", "image": "assets/ayush-gupta-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true },
-    { "id": "robert-kennedy", "name": "Robert Kennedy", "role": "Competitions Officer", "image": "assets/robert-kennedy-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true },
-    { "id": "aman-panesar", "name": "Aman Panesar", "role": "Social Secretary", "image": "assets/aman-panesar-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true },
-    { "id": "amanda-castello-cortes", "name": "Amanda Castello-Cortes", "role": "Welfare Officer", "image": "assets/amanda-castello-cortes-2026.jpg", "imageScale": 2.3, "imagePosition": "88% 26%", "published": true }
+    {
+      "id": "yashas-paluri",
+      "name": "Yashas Paluri",
+      "role": "President",
+      "image": "assets/yashas-paluri-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 30%",
+      "published": true
+    },
+    {
+      "id": "numa-fecher",
+      "name": "Numa Fecher",
+      "role": "General Secretary",
+      "image": "assets/numa-fecher-portrait.webp",
+      "imageScale": 1.25,
+      "imagePosition": "50% 30%",
+      "published": true
+    },
+    {
+      "id": "eaint-swe",
+      "name": "Eaint Swe (Freya)",
+      "role": "Treasurer",
+      "image": "assets/eaint-swe-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 30%",
+      "published": true
+    },
+    {
+      "id": "iman-ibrahim",
+      "name": "Iman Ibrahim",
+      "role": "Technical Officer",
+      "image": "assets/iman-ibrahim-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 30%",
+      "published": true
+    },
+    {
+      "id": "ayush-gupta",
+      "name": "Ayush Gupta",
+      "role": "Technical Officer",
+      "image": "assets/ayush-gupta-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 30%",
+      "published": true
+    },
+    {
+      "id": "robert-kennedy",
+      "name": "Robert Kennedy",
+      "role": "Competitions Officer",
+      "image": "assets/robert-kennedy-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 30%",
+      "published": true
+    },
+    {
+      "id": "aman-panesar",
+      "name": "Aman Panesar",
+      "role": "Social Secretary",
+      "image": "assets/aman-panesar-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 48%",
+      "published": true
+    },
+    {
+      "id": "amanda-castello-cortes",
+      "name": "Amanda Castello-Cortes",
+      "role": "Welfare Officer",
+      "image": "assets/amanda-castello-cortes-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 30%",
+      "published": true
+    },
+    {
+      "id": "stuti-gupta",
+      "name": "Stuti Gupta",
+      "role": "Publicity Officer",
+      "image": "assets/stuti-gupta-portrait.webp",
+      "imageScale": 1,
+      "imagePosition": "50% 30%",
+      "published": true
+    }
   ]
 }
