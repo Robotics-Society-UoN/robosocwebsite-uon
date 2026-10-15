@@ -30,9 +30,9 @@
       "SOCIALS: Monthly socials ",
       "OPEN TO ALL: Any course, any level"
     ],
-    "image": "assets/unibots-action-640.webp",
+    "image": "assets/electronics-workshop-640.webp",
     "imagePosition": "50% 50%",
-    "imageAlt": "RoboSoc members testing a robot together at UniBots"
+    "imageAlt": "Students learning breadboard electronics at a RoboSoc workshop"
   },
   "calendar": {
     "heading": "What's on?"
@@ -92,7 +92,6 @@
         "url": "https://su.nottingham.ac.uk/shop/product/24959-RB-1YEARmembership"
       }
     ],
-   
     "copyright": "© 2026 ROBO>SOC • UoN Robotics Society"
   }
 }
